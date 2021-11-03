@@ -9,11 +9,11 @@ namespace BrickBreaker
 {
     public class Block
     {
-        public int width;
-        public int height;
+        public int width = 50;
+        public int height = 25;
+
         public int x;
         public int y; 
-
         public int hp;
         public Color colour;
 
