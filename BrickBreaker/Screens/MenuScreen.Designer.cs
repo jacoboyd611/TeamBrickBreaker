@@ -47,7 +47,7 @@
             this.playButton.Font = new System.Drawing.Font("Yu Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playButton.ForeColor = System.Drawing.Color.White;
             this.playButton.Location = new System.Drawing.Point(829, 98);
-            this.playButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.playButton.Margin = new System.Windows.Forms.Padding(4);
             this.playButton.Name = "playButton";
             this.playButton.Size = new System.Drawing.Size(206, 76);
             this.playButton.TabIndex = 0;
@@ -65,7 +65,7 @@
             this.exitButton.Font = new System.Drawing.Font("Yu Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exitButton.ForeColor = System.Drawing.Color.White;
             this.exitButton.Location = new System.Drawing.Point(829, 198);
-            this.exitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.exitButton.Margin = new System.Windows.Forms.Padding(4);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(206, 76);
             this.exitButton.TabIndex = 1;
@@ -77,19 +77,19 @@
             // 
             this.creatorLabel.AutoSize = true;
             this.creatorLabel.BackColor = System.Drawing.Color.Transparent;
-            this.creatorLabel.Font = new System.Drawing.Font("Tempus Sans ITC", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.creatorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.creatorLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.creatorLabel.Location = new System.Drawing.Point(539, 630);
+            this.creatorLabel.Location = new System.Drawing.Point(505, 648);
             this.creatorLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.creatorLabel.Name = "creatorLabel";
-            this.creatorLabel.Size = new System.Drawing.Size(527, 35);
+            this.creatorLabel.Size = new System.Drawing.Size(582, 31);
             this.creatorLabel.TabIndex = 3;
             this.creatorLabel.Text = "Creators: Jacob, Julia, Ethan, Ryan and Parker";
             // 
             // welcomeLabel
             // 
             this.welcomeLabel.BackColor = System.Drawing.Color.Transparent;
-            this.welcomeLabel.Font = new System.Drawing.Font("Tempus Sans ITC", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.welcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.welcomeLabel.ForeColor = System.Drawing.Color.White;
             this.welcomeLabel.Location = new System.Drawing.Point(-10, 52);
             this.welcomeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -111,9 +111,9 @@
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.playButton);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MenuScreen";
-            this.Size = new System.Drawing.Size(1068, 678);
+            this.Size = new System.Drawing.Size(1100, 700);
             this.ResumeLayout(false);
             this.PerformLayout();
 
