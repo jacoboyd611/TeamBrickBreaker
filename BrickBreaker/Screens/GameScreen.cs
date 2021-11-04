@@ -36,9 +36,12 @@ namespace BrickBreaker
         SolidBrush paddleBrush = new SolidBrush(Color.White);
         SolidBrush ballBrush = new SolidBrush(Color.White);
         SolidBrush blockBrush = new SolidBrush(Color.Red);
+        SolidBrush powerUpBrush;
 
         //PowerUp list 
         List<PowerUp> powerUps = new List<PowerUp>();
+        int powerUpSize = 20;
+        
 
         //random
         Random rnd = new Random();
@@ -190,6 +193,21 @@ namespace BrickBreaker
                     break;
                 }
             }
+            // power up move
+            foreach  (PowerUp p in powerUps)
+            {
+                p.Move();
+            }
+
+            //power up collision
+
+            for(int i = 0; i < powerUps.Count(); i++)
+            {
+                if (powerUps[i].PaddleCollision(paddle))
+                {
+                    powerUps.Remove(powerUps[i]);
+                }
+            }
 
             //redraw the screen
             Refresh();
@@ -221,16 +239,39 @@ namespace BrickBreaker
 
             // Draws ball
             e.Graphics.FillRectangle(ballBrush, ball.x, ball.y, ball.size, ball.size);
+
+            // Draw Power Ups
+            foreach (PowerUp p in powerUps)
+            {
+                powerUpBrush = new SolidBrush(p.colour);
+
+                e.Graphics.FillRectangle(powerUpBrush, p.x, p.y, powerUpSize, powerUpSize);
+            }
         }
 
-        public void MakePowerUp(double x, double y)
+        public void MakePowerUp(float x, float y)
         {
-            if (rnd.Next(1, 21) == 20)
+            if (rnd.Next(1, 6) == 5)
             {
                 string[] powerNames = new string[] { "scatterShot", "wumbo", "krabbyPatty" };
                 string power = powerNames[rnd.Next(0, powerNames.Length)];
+                #region colourSelection
+                Color powerColour;
+                if (power == "scatterShot")
+                {
+                     powerColour = Color.Tan;
+                }
+                else if (power == "wumbo")
+                {
+                    powerColour = Color.Gold;
+                }
+                else
+                {
+                    powerColour = Color.White;
+                }
+                #endregion
 
-                PowerUp powerUp = new PowerUp(power, x, y);
+                PowerUp powerUp = new PowerUp(power, x, y, powerColour);
                 powerUps.Add(powerUp);
             }
         }
