@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
+using System.Xml;
 
 namespace BrickBreaker
 {
@@ -36,9 +37,12 @@ namespace BrickBreaker
         SolidBrush paddleBrush = new SolidBrush(Color.White);
         SolidBrush ballBrush = new SolidBrush(Color.White);
         SolidBrush blockBrush = new SolidBrush(Color.Red);
+        SolidBrush powerUpBrush;
 
         //PowerUp list 
         List<PowerUp> powerUps = new List<PowerUp>();
+        int powerUpSize = 20;
+        
 
         //random
         Random rnd = new Random();
@@ -49,6 +53,7 @@ namespace BrickBreaker
         public GameScreen()
         {
             InitializeComponent();
+            ReadXml();
             OnStart();
         }
 
@@ -79,19 +84,8 @@ namespace BrickBreaker
             int ballSize = 20;
             ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
 
-            #region Creates blocks for generic level. Need to replace with code that loads levels.
+            #region Creates blocks for generic level. Need to replace with code that loads levels.          
             
-            //TODO - replace all the code in this region eventually with code that loads levels from xml files
-            
-            blocks.Clear();
-            int x = 10;
-
-            while (blocks.Count < 12)
-            {
-                x += 57;
-                Block b1 = new Block(x, 10, 1, Color.White);
-                blocks.Add(b1);
-            }
 
             #endregion
 
@@ -196,6 +190,21 @@ namespace BrickBreaker
                     break;
                 }
             }
+            // power up move
+            foreach  (PowerUp p in powerUps)
+            {
+                p.Move();
+            }
+
+            //power up collision
+
+            for(int i = 0; i < powerUps.Count(); i++)
+            {
+                if (powerUps[i].PaddleCollision(paddle))
+                {
+                    powerUps.Remove(powerUps[i]);
+                }
+            }
 
             //redraw the screen
             Refresh();
@@ -227,19 +236,56 @@ namespace BrickBreaker
 
             // Draws ball
             e.Graphics.FillRectangle(ballBrush, ball.x, ball.y, ball.size, ball.size);
+
+            // Draw Power Ups
+            foreach (PowerUp p in powerUps)
+            {
+                powerUpBrush = new SolidBrush(p.colour);
+
+                e.Graphics.FillRectangle(powerUpBrush, p.x, p.y, powerUpSize, powerUpSize);
+            }
         }
 
-        public void MakePowerUp(double x, double y)
+        public void MakePowerUp(float x, float y)
         {
-            if (rnd.Next(1, 21) == 20)
+            if (rnd.Next(1, 6) == 5)
             {
                 string[] powerNames = new string[] { "scatterShot", "wumbo", "krabbyPatty" };
                 string power = powerNames[rnd.Next(0, powerNames.Length)];
+                #region colourSelection
+                Color powerColour;
+                if (power == "scatterShot")
+                {
+                     powerColour = Color.Tan;
+                }
+                else if (power == "wumbo")
+                {
+                    powerColour = Color.Gold;
+                }
+                else
+                {
+                    powerColour = Color.White;
+                }
+                #endregion
 
-                PowerUp powerUp = new PowerUp(power, x, y);
+                PowerUp powerUp = new PowerUp(power, x, y, powerColour);
                 powerUps.Add(powerUp);
             }
         }
 
+        private void ReadXml()
+        {
+            XmlReader reader = XmlReader.Create($"Resources/test1.xml");
+            while (reader.Read())
+            {
+                Block b = new Block();
+                reader.ReadToFollowing("brick");
+                b.x = Convert.ToInt32(reader.GetAttribute("x"));
+                b.y = Convert.ToInt32(reader.GetAttribute("y"));
+                b.width = Convert.ToInt32(reader.GetAttribute("width"));
+                b.height = Convert.ToInt32(reader.GetAttribute("height"));
+                blocks.Add(b);
+            }
+        }
     }
 }
