@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
+using System.Xml;
 
 namespace BrickBreaker
 {
@@ -49,6 +50,7 @@ namespace BrickBreaker
         public GameScreen()
         {
             InitializeComponent();
+            ReadXml();
             OnStart();
         }
 
@@ -79,19 +81,8 @@ namespace BrickBreaker
             int ballSize = 20;
             ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
 
-            #region Creates blocks for generic level. Need to replace with code that loads levels.
+            #region Creates blocks for generic level. Need to replace with code that loads levels.          
             
-            //TODO - replace all the code in this region eventually with code that loads levels from xml files
-            
-            blocks.Clear();
-            int x = 10;
-
-            while (blocks.Count < 12)
-            {
-                x += 57;
-                Block b1 = new Block(x, 10, 1, Color.White);
-                blocks.Add(b1);
-            }
 
             #endregion
 
@@ -235,5 +226,19 @@ namespace BrickBreaker
             }
         }
 
+        private void ReadXml()
+        {
+            XmlReader reader = XmlReader.Create($"Resources/test1.xml");
+            while (reader.Read())
+            {
+                Block b = new Block();
+                reader.ReadToFollowing("brick");
+                b.x = Convert.ToInt32(reader.GetAttribute("x"));
+                b.y = Convert.ToInt32(reader.GetAttribute("y"));
+                b.width = Convert.ToInt32(reader.GetAttribute("width"));
+                b.height = Convert.ToInt32(reader.GetAttribute("height"));
+                blocks.Add(b);
+            }
+        }
     }
 }
