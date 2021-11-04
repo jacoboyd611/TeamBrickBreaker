@@ -37,6 +37,13 @@ namespace BrickBreaker
         SolidBrush ballBrush = new SolidBrush(Color.White);
         SolidBrush blockBrush = new SolidBrush(Color.Red);
 
+        //PowerUp list 
+        List<PowerUp> powerUps = new List<PowerUp>();
+
+        //random
+        Random rnd = new Random();
+
+
         #endregion
 
         public GameScreen()
@@ -164,8 +171,14 @@ namespace BrickBreaker
             // Check if ball has collided with any blocks
             foreach (Block b in blocks)
             {
+
+
                 if (ball.BlockCollision(b))
                 {
+
+                    //5% chance to make power up when block breaks
+                    MakePowerUp(b.x, b.y);
+
                     blocks.Remove(b);
 
                     if (blocks.Count == 0)
@@ -209,5 +222,18 @@ namespace BrickBreaker
             // Draws ball
             e.Graphics.FillRectangle(ballBrush, ball.x, ball.y, ball.size, ball.size);
         }
+
+        public void MakePowerUp(double x, double y)
+        {
+            if (rnd.Next(1, 21) == 20)
+            {
+                string[] powerNames = new string[] { "scatterShot", "wumbo", "krabbyPatty" };
+                string power = powerNames[rnd.Next(0, powerNames.Length)];
+
+                PowerUp powerUp = new PowerUp(power, x, y);
+                powerUps.Add(powerUp);
+            }
+        }
+
     }
 }
