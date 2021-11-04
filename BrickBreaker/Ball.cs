@@ -45,7 +45,7 @@ namespace BrickBreaker
             Rectangle ballRec = new Rectangle(x, y, size, size);
             Rectangle paddleRec = new Rectangle(p.x, p.y, p.width, p.height);
 
-            if (ballRec.IntersectsWith(paddleRec))
+            if (ballRec.IntersectsWith(paddleRec) && ySpeed >= 0)
             {
                 ySpeed *= -1;
             }
