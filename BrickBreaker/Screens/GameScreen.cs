@@ -62,10 +62,6 @@ namespace BrickBreaker
             //set life counter
             lives = 3;
 
-            life1Box.Enabled = true;
-            life2Box.Enabled = true;
-            life3Box.Enabled = true;
-
             //set all button presses to false.
             leftArrowDown = rightArrowDown = false;
 
@@ -157,13 +153,13 @@ namespace BrickBreaker
 
                 if (lives == 2)
                 {
-                    life3Box.Enabled = false;
+                    life3Box.Visible = false;
                 }
                 else if (lives == 1)
                 {
-                    life2Box.Enabled = false;
+                    life2Box.Visible = false;
                 }
-                if (lives == 0)
+                else if (lives == 0)
                 {
                     gameTimer.Enabled = false;
                     OnEnd();
