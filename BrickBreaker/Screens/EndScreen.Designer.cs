@@ -41,9 +41,10 @@ namespace BrickBreaker
             this.gameoverLabel.BackColor = System.Drawing.Color.Transparent;
             this.gameoverLabel.Font = new System.Drawing.Font("Ink Free", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gameoverLabel.ForeColor = System.Drawing.Color.White;
-            this.gameoverLabel.Location = new System.Drawing.Point(61, 17);
+            this.gameoverLabel.Location = new System.Drawing.Point(65, 58);
+            this.gameoverLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.gameoverLabel.Name = "gameoverLabel";
-            this.gameoverLabel.Size = new System.Drawing.Size(706, 206);
+            this.gameoverLabel.Size = new System.Drawing.Size(941, 254);
             this.gameoverLabel.TabIndex = 0;
             this.gameoverLabel.Text = "Game Over";
             this.gameoverLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -56,9 +57,10 @@ namespace BrickBreaker
             this.retryLevel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.retryLevel.Font = new System.Drawing.Font("Ink Free", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.retryLevel.ForeColor = System.Drawing.Color.White;
-            this.retryLevel.Location = new System.Drawing.Point(111, 204);
+            this.retryLevel.Location = new System.Drawing.Point(132, 288);
+            this.retryLevel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.retryLevel.Name = "retryLevel";
-            this.retryLevel.Size = new System.Drawing.Size(185, 82);
+            this.retryLevel.Size = new System.Drawing.Size(247, 101);
             this.retryLevel.TabIndex = 1;
             this.retryLevel.Text = "Retry";
             this.retryLevel.UseVisualStyleBackColor = true;
@@ -72,9 +74,10 @@ namespace BrickBreaker
             this.menuButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.menuButton.Font = new System.Drawing.Font("Ink Free", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuButton.ForeColor = System.Drawing.Color.White;
-            this.menuButton.Location = new System.Drawing.Point(325, 204);
+            this.menuButton.Location = new System.Drawing.Point(417, 288);
+            this.menuButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.menuButton.Name = "menuButton";
-            this.menuButton.Size = new System.Drawing.Size(185, 82);
+            this.menuButton.Size = new System.Drawing.Size(247, 101);
             this.menuButton.TabIndex = 2;
             this.menuButton.Text = "Main Menu";
             this.menuButton.UseVisualStyleBackColor = true;
@@ -88,9 +91,10 @@ namespace BrickBreaker
             this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exitButton.Font = new System.Drawing.Font("Ink Free", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exitButton.ForeColor = System.Drawing.Color.White;
-            this.exitButton.Location = new System.Drawing.Point(547, 204);
+            this.exitButton.Location = new System.Drawing.Point(713, 288);
+            this.exitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(185, 82);
+            this.exitButton.Size = new System.Drawing.Size(247, 101);
             this.exitButton.TabIndex = 3;
             this.exitButton.Text = "Exit";
             this.exitButton.UseVisualStyleBackColor = true;
@@ -98,7 +102,7 @@ namespace BrickBreaker
             // 
             // EndScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
@@ -107,6 +111,7 @@ namespace BrickBreaker
             this.Controls.Add(this.menuButton);
             this.Controls.Add(this.retryLevel);
             this.Controls.Add(this.gameoverLabel);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "EndScreen";
             this.Size = new System.Drawing.Size(1100, 700);
             this.ResumeLayout(false);
