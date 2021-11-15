@@ -47,6 +47,8 @@ namespace BrickBreaker
         //random
         Random rnd = new Random();
 
+        public static List<Ball> balls = new List<Ball>();
+
 
         #endregion
 
@@ -167,7 +169,7 @@ namespace BrickBreaker
             }
 
             // Check for collision of ball with paddle, (incl. paddle movement)
-            ball.PaddleCollision(paddle);
+            ball.PaddleCollision(paddle, leftArrowDown, rightArrowDown);
 
             // Check if ball has collided with any blocks
             foreach (Block b in blocks)
