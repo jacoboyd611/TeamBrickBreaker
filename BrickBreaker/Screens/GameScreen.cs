@@ -172,7 +172,6 @@ namespace BrickBreaker
             foreach (Block b in blocks)
             {
 
-
                 if (ball.BlockCollision(b))
                 {
 
