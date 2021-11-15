@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -10,6 +11,8 @@ namespace BrickBreaker
         public Color colour;
 
         public static Random rand = new Random();
+
+        public static List<Ball> balls = new List<Ball>();
 
         public Ball(int _x, int _y, int _xSpeed, int _ySpeed, int _ballSize)
         {
