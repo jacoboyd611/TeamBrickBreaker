@@ -12,8 +12,6 @@ namespace BrickBreaker
 
         public static Random rand = new Random();
 
-        public static List<Ball> balls = new List<Ball>();
-
         public Ball(int _x, int _y, int _xSpeed, int _ySpeed, int _ballSize)
         {
             x = _x;
@@ -43,7 +41,7 @@ namespace BrickBreaker
             return blockRec.IntersectsWith(ballRec);
         }
 
-        public void PaddleCollision(Paddle p)
+        public void PaddleCollision(Paddle p, bool left, bool right)
         {
             Rectangle ballRec = new Rectangle(x, y, size, size);
             Rectangle paddleRec = new Rectangle(p.x, p.y, p.width, p.height);
@@ -51,6 +49,7 @@ namespace BrickBreaker
             if (ballRec.IntersectsWith(paddleRec) && ySpeed >= 0)
             {
                 ySpeed *= -1;
+                if (GameScreen.)
             }
         }
 
