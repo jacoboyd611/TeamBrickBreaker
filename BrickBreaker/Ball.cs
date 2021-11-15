@@ -49,7 +49,8 @@ namespace BrickBreaker
             if (ballRec.IntersectsWith(paddleRec) && ySpeed >= 0)
             {
                 ySpeed *= -1;
-                if (GameScreen.)
+                if (left) { xSpeed = -Math.Abs(xSpeed); }
+                if (right) { xSpeed = Math.Abs(xSpeed); }
             }
         }
 
