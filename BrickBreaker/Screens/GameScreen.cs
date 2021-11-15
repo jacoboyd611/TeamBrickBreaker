@@ -273,7 +273,7 @@ namespace BrickBreaker
 
         private void ReadXml()
         {
-            XmlReader reader = XmlReader.Create($"Resources/test1.xml");
+            XmlReader reader = XmlReader.Create("Levels/test1.xml");
             while (reader.Read())
             {
                 Block b = new Block();
