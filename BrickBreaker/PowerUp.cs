@@ -35,6 +35,7 @@ namespace BrickBreaker
 
             if (powerRec.IntersectsWith(paddleRec))
             {
+                
                 return true;
             }
 
