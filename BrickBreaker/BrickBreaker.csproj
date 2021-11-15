@@ -66,10 +66,10 @@
   <ItemGroup>
     <Compile Include="Ball.cs" />
     <Compile Include="Block.cs" />
-    <Compile Include="EndScreen.cs">
+    <Compile Include="Screens\EndScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EndScreen.Designer.cs">
+    <Compile Include="Screens\EndScreen.Designer.cs">
       <DependentUpon>EndScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
@@ -94,7 +94,7 @@
     <Compile Include="Screens\GameScreen.Designer.cs">
       <DependentUpon>GameScreen.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="EndScreen.resx">
+    <EmbeddedResource Include="Screens\EndScreen.resx">
       <DependentUpon>EndScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
