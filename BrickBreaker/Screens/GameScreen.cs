@@ -63,6 +63,10 @@ namespace BrickBreaker
             //set life counter
             lives = 3;
 
+            life1Box.Enabled = true;
+            life2Box.Enabled = true;
+            life3Box.Enabled = true;
+
             //set all button presses to false.
             leftArrowDown = rightArrowDown = false;
 
@@ -148,16 +152,18 @@ namespace BrickBreaker
             {
                 lives--;
 
-                //FIX JULIA
-                if(lives == 2)
-                {
-                    life3Box.Enabled = false;
-                }
-
                 // Moves the ball back to origin
                 ball.x = ((paddle.x - (ball.size / 2)) + (paddle.width / 2));
                 ball.y = (this.Height - paddle.height) - 85;
 
+                if (lives == 2)
+                {
+                    life3Box.Enabled = false;
+                }
+                else if (lives == 1)
+                {
+                    life2Box.Enabled = false;
+                }
                 if (lives == 0)
                 {
                     gameTimer.Enabled = false;

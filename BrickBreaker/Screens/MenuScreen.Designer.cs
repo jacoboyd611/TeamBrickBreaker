@@ -84,7 +84,8 @@
             this.creatorLabel.Name = "creatorLabel";
             this.creatorLabel.Size = new System.Drawing.Size(611, 37);
             this.creatorLabel.TabIndex = 3;
-            this.creatorLabel.Text = "Creators: Jacob, Julia, Ethan, Ryan and Parker";
+            this.creatorLabel.Text = "Creators: Jacob, Julia, Ethan, Ryan, and Parker";
+            //this.creatorLabel.Click += new System.EventHandler(this.creatorLabel_Click);
             // 
             // welcomeLabel
             // 
