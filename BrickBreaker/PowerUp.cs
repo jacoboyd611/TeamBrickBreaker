@@ -14,12 +14,31 @@ namespace BrickBreaker
         public float x, y;
         public Color colour;
 
-        public PowerUp(string _type, float _x, float _y, Color _colour)
+        public PowerUp(int rand, float _x, float _y)
         {
-            type = _type;
+
+            string[] powerNames = new string[] { "scatterShot", "wumbo", "krabbyPatty" };
+            string power = powerNames[rand];
+            #region colourSelection
+            Color powerColour;
+            if (power == "scatterShot")
+            {
+                powerColour = Color.Blue;
+            }
+            else if (power == "wumbo")
+            {
+                powerColour = Color.Gold;
+            }
+            else
+            {
+                powerColour = Color.White;
+            }
+            #endregion
+
+            type = power;
             x = _x;
             y = _y;
-            colour = _colour;
+            colour = powerColour;
         }
 
        public void Move()
