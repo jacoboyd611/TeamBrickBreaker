@@ -64,7 +64,7 @@ namespace BrickBreaker
         public void OnStart()
         {
             balls.Clear();
-            //BackgroundImage = image[0];
+            BackgroundImage = image[0];
             //set life counter
             lives = 3;
 
@@ -165,15 +165,7 @@ namespace BrickBreaker
                     ball.x = ((paddle.x - (ball.size / 2)) + (paddle.width / 2));
                     ball.y = (this.Height - paddle.height) - 85;
 
-                    if (lives == 2)
-                    {
-                        life3Box.Visible = false;
-                    }
-                    else if (lives == 1)
-                    {
-                        life2Box.Visible = false;
-                    }
-                    else if (lives == 0)
+                    if (lives == 0)
                     {
                         gameTimer.Enabled = false;
                         OnEnd();
@@ -193,7 +185,6 @@ namespace BrickBreaker
                 {
                     if (b.BlockCollision(blocks[i]))
                     {
-
                         //5% chance to make power up when block breaks
                         MakePowerUp(blocks[i].x, blocks[i].y);
 
@@ -204,7 +195,6 @@ namespace BrickBreaker
                             gameTimer.Enabled = false;
                             OnEnd();
                         }
-
                         break;
                     }
                 }
@@ -272,6 +262,19 @@ namespace BrickBreaker
 
                 e.Graphics.FillRectangle(powerUpBrush, p.x, p.y, powerUpSize, powerUpSize);
             }
+            //draws lifes
+            if (lives == 3)
+            {
+                e.Graphics.DrawImage(Properties.Resources.jellyfish, 152, 552, 51, 67);
+                e.Graphics.DrawImage(Properties.Resources.jellyfish, 84, 552, 51, 67);
+                e.Graphics.DrawImage(Properties.Resources.jellyfish, 12, 552, 51, 67);
+            }
+            else if (lives == 2)
+            {
+                e.Graphics.DrawImage(Properties.Resources.jellyfish, 84, 552, 51, 67);
+                e.Graphics.DrawImage(Properties.Resources.jellyfish, 12, 552, 51, 67);
+            }
+            else { e.Graphics.DrawImage(Properties.Resources.jellyfish, 12, 552, 51, 67); }
         }
 
         public void MakePowerUp(float x, float y)

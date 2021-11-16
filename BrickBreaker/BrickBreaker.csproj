@@ -149,6 +149,7 @@
     <Content Include="Levels\test1.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\jellyfish.png" />
     <None Include="Resources\jellyfishFields.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
