@@ -49,6 +49,7 @@ namespace BrickBreaker
 
         List<Image> backgrounds = new List<Image>();
         public static List<Ball> balls = new List<Ball>();
+        public static Image[] image = new Image[] { Properties.Resources.jellyfishFields };
 
 
         #endregion
@@ -62,6 +63,7 @@ namespace BrickBreaker
 
         public void OnStart()
         {
+            //BackgroundImage = image[0];
             //set life counter
             lives = 3;
 
@@ -150,17 +152,19 @@ namespace BrickBreaker
             {
                 lives--;
 
-                //FIX JULIA
-                if(lives == 2)
-                {
-                    life3Box.Enabled = false;
-                }
-
                 // Moves the ball back to origin
                 ball.x = ((paddle.x - (ball.size / 2)) + (paddle.width / 2));
                 ball.y = (this.Height - paddle.height) - 85;
 
-                if (lives == 0)
+                if (lives == 2)
+                {
+                    life3Box.Visible = false;
+                }
+                else if (lives == 1)
+                {
+                    life2Box.Visible = false;
+                }
+                else if (lives == 0)
                 {
                     gameTimer.Enabled = false;
                     OnEnd();

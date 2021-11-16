@@ -47,6 +47,7 @@
             // 
             // life1Box
             // 
+            this.life1Box.BackColor = System.Drawing.Color.Transparent;
             this.life1Box.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("life1Box.BackgroundImage")));
             this.life1Box.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.life1Box.InitialImage = null;
@@ -58,6 +59,7 @@
             // 
             // life3Box
             // 
+            this.life3Box.BackColor = System.Drawing.Color.Transparent;
             this.life3Box.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("life3Box.BackgroundImage")));
             this.life3Box.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.life3Box.InitialImage = null;
@@ -69,6 +71,7 @@
             // 
             // life2Box
             // 
+            this.life2Box.BackColor = System.Drawing.Color.Transparent;
             this.life2Box.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("life2Box.BackgroundImage")));
             this.life2Box.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.life2Box.InitialImage = null;
