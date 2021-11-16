@@ -47,6 +47,7 @@ namespace BrickBreaker
         //random
         Random rnd = new Random();
 
+        List<Image> backgrounds = new List<Image>();
         public static List<Ball> balls = new List<Ball>();
 
 
@@ -231,7 +232,7 @@ namespace BrickBreaker
             // Draws blocks
             foreach (Block b in blocks)
             {
-                e.Graphics.FillRectangle(blockBrush, b.x, b.y, b.width, b.height);
+                e.Graphics.FillRectangle(new SolidBrush(Color.FromName(b.colour)), b.x, b.y, b.width, b.height);
             }
 
             // Draws ball
@@ -275,7 +276,7 @@ namespace BrickBreaker
 
         private void ReadXml()
         {
-            XmlReader reader = XmlReader.Create("Levels/test1.xml");
+            XmlReader reader = XmlReader.Create("Levels/lvl1.xml");
             while (reader.Read())
             {
                 Block b = new Block();
@@ -284,8 +285,11 @@ namespace BrickBreaker
                 b.y = Convert.ToInt32(reader.GetAttribute("y"));
                 b.width = Convert.ToInt32(reader.GetAttribute("width"));
                 b.height = Convert.ToInt32(reader.GetAttribute("height"));
-                blocks.Add(b);
+                b.hp = Convert.ToInt32(reader.GetAttribute("value"));
+                b.colour = reader.GetAttribute("colour");
+                if (b.colour != null) { blocks.Add(b); }
             }
+            reader.Close();
         }
     }
 }
