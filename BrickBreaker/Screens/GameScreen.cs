@@ -48,6 +48,7 @@ namespace BrickBreaker
         Random rnd = new Random();
 
         public static List<Ball> balls = new List<Ball>();
+        public static Image[] image = new Image[] { Properties.Resources.jellyfishFields };
 
 
         #endregion
@@ -61,6 +62,7 @@ namespace BrickBreaker
 
         public void OnStart()
         {
+            //BackgroundImage = image[0];
             //set life counter
             lives = 3;
 
@@ -277,7 +279,7 @@ namespace BrickBreaker
 
         private void ReadXml()
         {
-            XmlReader reader = XmlReader.Create("Levels/test1.xml");
+            XmlReader reader = XmlReader.Create("Levels/test1.xml"); 
             while (reader.Read())
             {
                 Block b = new Block();
