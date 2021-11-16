@@ -1,7 +1,7 @@
 ﻿/*  Created by: 
  *  Project: Brick Breaker
  *  Date: 
- */ 
+ */
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -42,7 +42,7 @@ namespace BrickBreaker
         //PowerUp list 
         List<PowerUp> powerUps = new List<PowerUp>();
         int powerUpSize = 20;
-        
+
 
         //random
         Random rnd = new Random();
@@ -87,9 +87,10 @@ namespace BrickBreaker
             int ySpeed = 6;
             int ballSize = 20;
             ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
+            balls.Add(ball);
 
             #region Creates blocks for generic level. Need to replace with code that loads levels.          
-            
+
 
             #endregion
 
@@ -142,14 +143,24 @@ namespace BrickBreaker
             }
 
             // Move ball
-            ball.Move();
+            foreach (Ball b in balls)
+            {
+                b.Move();
+            }
 
             // Check for collision with top and side walls
-            ball.WallCollision(this);
+            foreach (Ball b in balls)
+            {
+                b.WallCollision(this);
+            }
 
             // Check for ball hitting bottom of screen
-            if (ball.BottomCollision(this))
+            for (int i = 0; i < balls.Count(); i++)
             {
+
+                if (balls[i].BottomCollision(this))
+                {
+     
                 lives--;
 
                 // Moves the ball back to origin
@@ -172,42 +183,60 @@ namespace BrickBreaker
             }
 
             // Check for collision of ball with paddle, (incl. paddle movement)
-            ball.PaddleCollision(paddle, leftArrowDown, rightArrowDown);
-
-            // Check if ball has collided with any blocks
-            foreach (Block b in blocks)
+            foreach (Ball b in balls)
             {
-
-                if (ball.BlockCollision(b))
+                b.PaddleCollision(paddle, leftArrowDown, rightArrowDown);
+            }
+            // Check if ball has collided with any blocks
+            for (int i = 0; i < blocks.Count(); i++)
+            {
+                foreach (Ball b in balls)
                 {
-
-                    //5% chance to make power up when block breaks
-                    MakePowerUp(b.x, b.y);
-
-                    blocks.Remove(b);
-
-                    if (blocks.Count == 0)
+                    if (b.BlockCollision(blocks[i]))
                     {
-                        gameTimer.Enabled = false;
-                        OnEnd();
-                    }
 
-                    break;
+                        //5% chance to make power up when block breaks
+                        MakePowerUp(blocks[i].x, blocks[i].y);
+
+                        blocks.Remove(blocks[i]);
+
+                        if (blocks.Count == 0)
+                        {
+                            gameTimer.Enabled = false;
+                            OnEnd();
+                        }
+
+                        break;
+                    }
                 }
             }
             // power up move
-            foreach  (PowerUp p in powerUps)
+            foreach (PowerUp p in powerUps)
             {
                 p.Move();
             }
 
             //power up collision
 
-            for(int i = 0; i < powerUps.Count(); i++)
+            for (int i = 0; i < powerUps.Count(); i++)
             {
                 if (powerUps[i].PaddleCollision(paddle))
                 {
+                    if (powerUps[i].type == "scatterShot")
+                    {
+                        int xSpeed = 6;
+                        int ySpeed = 6;
+                        int ballSize = 20;
+
+
+                        Ball ball = new Ball(paddle.x, paddle.y, xSpeed, ySpeed, ballSize);
+                        balls.Add(ball);
+
+                    }
+
                     powerUps.Remove(powerUps[i]);
+
+
                 }
             }
 
@@ -220,13 +249,12 @@ namespace BrickBreaker
             // Goes to the game over screen
             Form form = this.FindForm();
             EndScreen ps = new EndScreen();
-            
+
             ps.Location = new Point((form.Width - ps.Width) / 2, (form.Height - ps.Height) / 2);
 
             form.Controls.Add(ps);
             form.Controls.Remove(this);
         }
-
         public void GameScreen_Paint(object sender, PaintEventArgs e)
         {
             // Draws paddle
@@ -240,8 +268,10 @@ namespace BrickBreaker
             }
 
             // Draws ball
-            e.Graphics.FillRectangle(ballBrush, ball.x, ball.y, ball.size, ball.size);
-
+            foreach (Ball b in balls)
+            {
+                e.Graphics.FillRectangle(ballBrush, b.x, b.y, b.size, b.size);
+            }
             // Draw Power Ups
             foreach (PowerUp p in powerUps)
             {
@@ -255,25 +285,7 @@ namespace BrickBreaker
         {
             if (rnd.Next(1, 6) == 5)
             {
-                string[] powerNames = new string[] { "scatterShot", "wumbo", "krabbyPatty" };
-                string power = powerNames[rnd.Next(0, powerNames.Length)];
-                #region colourSelection
-                Color powerColour;
-                if (power == "scatterShot")
-                {
-                     powerColour = Color.Tan;
-                }
-                else if (power == "wumbo")
-                {
-                    powerColour = Color.Gold;
-                }
-                else
-                {
-                    powerColour = Color.White;
-                }
-                #endregion
-
-                PowerUp powerUp = new PowerUp(power, x, y, powerColour);
+                PowerUp powerUp = new PowerUp(rnd.Next(0, 3), x, y);
                 powerUps.Add(powerUp);
             }
         }
