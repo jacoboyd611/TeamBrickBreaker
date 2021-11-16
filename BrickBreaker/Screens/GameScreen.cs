@@ -63,6 +63,7 @@ namespace BrickBreaker
 
         public void OnStart()
         {
+            balls.Clear();
             //BackgroundImage = image[0];
             //set life counter
             lives = 3;
@@ -157,28 +158,26 @@ namespace BrickBreaker
             // Check for ball hitting bottom of screen
             for (int i = 0; i < balls.Count(); i++)
             {
-
                 if (balls[i].BottomCollision(this))
                 {
-     
-                lives--;
+                    lives--;
+                    // Moves the ball back to origin
+                    ball.x = ((paddle.x - (ball.size / 2)) + (paddle.width / 2));
+                    ball.y = (this.Height - paddle.height) - 85;
 
-                // Moves the ball back to origin
-                ball.x = ((paddle.x - (ball.size / 2)) + (paddle.width / 2));
-                ball.y = (this.Height - paddle.height) - 85;
-
-                if (lives == 2)
-                {
-                    life3Box.Visible = false;
-                }
-                else if (lives == 1)
-                {
-                    life2Box.Visible = false;
-                }
-                else if (lives == 0)
-                {
-                    gameTimer.Enabled = false;
-                    OnEnd();
+                    if (lives == 2)
+                    {
+                        life3Box.Visible = false;
+                    }
+                    else if (lives == 1)
+                    {
+                        life2Box.Visible = false;
+                    }
+                    else if (lives == 0)
+                    {
+                        gameTimer.Enabled = false;
+                        OnEnd();
+                    }
                 }
             }
 
@@ -227,20 +226,13 @@ namespace BrickBreaker
                         int xSpeed = 6;
                         int ySpeed = 6;
                         int ballSize = 20;
-
-
                         Ball ball = new Ball(paddle.x, paddle.y, xSpeed, ySpeed, ballSize);
                         balls.Add(ball);
 
                     }
-
                     powerUps.Remove(powerUps[i]);
-
-
                 }
             }
-
-            //redraw the screen
             Refresh();
         }
 
@@ -255,6 +247,7 @@ namespace BrickBreaker
             form.Controls.Add(ps);
             form.Controls.Remove(this);
         }
+
         public void GameScreen_Paint(object sender, PaintEventArgs e)
         {
             // Draws paddle
@@ -309,3 +302,4 @@ namespace BrickBreaker
         }
     }
 }
+
