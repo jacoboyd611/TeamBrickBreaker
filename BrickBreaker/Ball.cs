@@ -33,9 +33,13 @@ namespace BrickBreaker
             Rectangle blockRec = new Rectangle(b.x, b.y, b.width, b.height);
             Rectangle ballRec = new Rectangle(x, y, size, size);
 
-            if (ballRec.IntersectsWith(blockRec))
+            if (ballRec.IntersectsWith(blockRec) && y >= b.y + b.height - 5 || ballRec.IntersectsWith(blockRec) && y <= b.y + 5)
             {
                 ySpeed *= -1;
+            }
+            else if (ballRec.IntersectsWith(blockRec) && x >= b.x + b.width - 5 || ballRec.IntersectsWith(blockRec) && x <= b.x + 5)
+            {
+                xSpeed *= -1;
             }
 
             return blockRec.IntersectsWith(ballRec);
