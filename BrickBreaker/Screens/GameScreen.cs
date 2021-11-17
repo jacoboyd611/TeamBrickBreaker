@@ -36,9 +36,11 @@ namespace BrickBreaker
 
         // Brushes
         SolidBrush paddleBrush = new SolidBrush(Color.White);
-        SolidBrush ballBrush = new SolidBrush(Color.White);
+        SolidBrush ballBrush = new SolidBrush(Color.Yellow);
+        Pen ballBorder = new Pen(Color.Black);
         SolidBrush blockBrush = new SolidBrush(Color.Red);
         SolidBrush powerUpBrush;
+
 
         //PowerUp list 
         List<PowerUp> powerUps = new List<PowerUp>();
@@ -176,7 +178,6 @@ namespace BrickBreaker
                         balls.Remove(balls[i]);
                     }
 
-
                     if (lives == 0)
                     {
                         gameTimer.Enabled = false;
@@ -265,7 +266,8 @@ namespace BrickBreaker
             // Draws ball
             foreach (Ball b in balls)
             {
-                e.Graphics.FillRectangle(ballBrush, b.x, b.y, b.size, b.size);
+                e.Graphics.FillEllipse(ballBrush, b.x, b.y, b.size, b.size);
+                e.Graphics.DrawEllipse(ballBorder, b.x, b.y, b.size, b.size);
             }
             // Draw Power Ups
             foreach (PowerUp p in powerUps)
