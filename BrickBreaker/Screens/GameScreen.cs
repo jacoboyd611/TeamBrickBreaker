@@ -47,9 +47,8 @@ namespace BrickBreaker
         //random
         Random rnd = new Random();
 
-        List<Image> backgrounds = new List<Image>();
         public static List<Ball> balls = new List<Ball>();
-        public static Image[] image = new Image[] { Properties.Resources.jellyfishFields };
+        public static Image[] image = new Image[] { Properties.Resources.krustyKrab, Properties.Resources.spongebobHouse, Properties.Resources.squidwardsHouse, Properties.Resources.patricksHouse, Properties.Resources.jellyfishFields, Properties.Resources.gooLagoon, Properties.Resources.bikini_bottom, Properties.Resources.gloveWorld };
 
 
         #endregion

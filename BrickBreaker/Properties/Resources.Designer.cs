@@ -63,6 +63,36 @@ namespace BrickBreaker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bikini_bottom {
+            get {
+                object obj = ResourceManager.GetObject("bikini_bottom", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gloveWorld {
+            get {
+                object obj = ResourceManager.GetObject("gloveWorld", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap gooLagoon {
+            get {
+                object obj = ResourceManager.GetObject("gooLagoon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap jellyfish {
             get {
                 object obj = ResourceManager.GetObject("jellyfish", resourceCulture);
@@ -76,6 +106,46 @@ namespace BrickBreaker.Properties {
         internal static System.Drawing.Bitmap jellyfishFields {
             get {
                 object obj = ResourceManager.GetObject("jellyfishFields", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap krustyKrab {
+            get {
+                object obj = ResourceManager.GetObject("krustyKrab", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap patricksHouse {
+            get {
+                object obj = ResourceManager.GetObject("patricksHouse", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap spongebobHouse {
+            get {
+                object obj = ResourceManager.GetObject("spongebobHouse", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap squidwardsHouse {
+            get {
+                object obj = ResourceManager.GetObject("squidwardsHouse", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

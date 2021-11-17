@@ -149,6 +149,13 @@
     <Content Include="Levels\test1.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\gloveWorld.png" />
+    <None Include="Resources\bikini bottom.png" />
+    <None Include="Resources\gooLagoon.png" />
+    <None Include="Resources\spongebobHouse.png" />
+    <None Include="Resources\patricksHouse.png" />
+    <None Include="Resources\squidwardsHouse.png" />
+    <None Include="Resources\krustyKrab.jpg" />
     <None Include="Resources\jellyfish.png" />
     <None Include="Resources\jellyfishFields.png" />
   </ItemGroup>
