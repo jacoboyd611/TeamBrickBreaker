@@ -18,6 +18,7 @@ namespace BrickBreaker
 {
     public partial class GameScreen : UserControl
     {
+        int level = 2;
         #region global values
 
         //player1 button control keys - DO NOT CHANGE
@@ -290,7 +291,7 @@ namespace BrickBreaker
 
         private void ReadXml()
         {
-            XmlReader reader = XmlReader.Create("Levels/lvl1.xml");
+            XmlReader reader = XmlReader.Create($"Levels/lvl{level}.xml");
             while (reader.Read())
             {
                 Block b = new Block();
