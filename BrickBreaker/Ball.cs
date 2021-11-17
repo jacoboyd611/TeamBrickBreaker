@@ -64,11 +64,13 @@ namespace BrickBreaker
             if (x <= 0)
             {
                 xSpeed *= -1;
+                ySpeed *= 5;
             }
             // Collision with right wall
             if (x >= (UC.Width - size))
             {
                 xSpeed *= -1;
+                ySpeed *= 5;
             }
             // Collision with top wall
             if (y <= 2)
