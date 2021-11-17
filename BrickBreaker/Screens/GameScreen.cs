@@ -271,22 +271,12 @@ namespace BrickBreaker
             foreach (PowerUp p in powerUps)
             {
                 powerUpBrush = new SolidBrush(p.colour);
-
                 e.Graphics.FillRectangle(powerUpBrush, p.x, p.y, powerUpSize, powerUpSize);
             }
             //draws lifes
-            if (lives == 3)
-            {
-                e.Graphics.DrawImage(Properties.Resources.jellyfish, 152, 552, 51, 67);
-                e.Graphics.DrawImage(Properties.Resources.jellyfish, 84, 552, 51, 67);
-                e.Graphics.DrawImage(Properties.Resources.jellyfish, 12, 552, 51, 67);
-            }
-            else if (lives == 2)
-            {
-                e.Graphics.DrawImage(Properties.Resources.jellyfish, 84, 552, 51, 67);
-                e.Graphics.DrawImage(Properties.Resources.jellyfish, 12, 552, 51, 67);
-            }
-            else { e.Graphics.DrawImage(Properties.Resources.jellyfish, 12, 552, 51, 67); }
+            if (lives == 3) { e.Graphics.DrawImage(Properties.Resources.jellyfish, 152, 552, 51, 67); }
+            if (lives >= 2) { e.Graphics.DrawImage(Properties.Resources.jellyfish, 84, 552, 51, 67); }
+            if (lives>=1) { e.Graphics.DrawImage(Properties.Resources.jellyfish, 12, 552, 51, 67); }
         }
 
         public void MakePowerUp(float x, float y)
