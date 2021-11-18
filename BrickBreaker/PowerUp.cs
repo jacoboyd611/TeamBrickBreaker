@@ -12,7 +12,7 @@ namespace BrickBreaker
        
         public string type;
         public float x, y;
-        public Color colour;
+        public Brush brush;
 
         public PowerUp(int rand, float _x, float _y)
         {
@@ -20,25 +20,23 @@ namespace BrickBreaker
             string[] powerNames = new string[] { "scatterShot", "wumbo", "krabbyPatty" };
             string power = powerNames[rand];
             #region colourSelection
-            Color powerColour;
             if (power == "scatterShot")
             {
-                powerColour = Color.Blue;
+                 brush = new SolidBrush(Color.Blue);
             }
             else if (power == "wumbo")
             {
-                powerColour = Color.Gold;
+                brush = new SolidBrush(Color.Gold);
             }
             else
             {
-                powerColour = Color.White;
+                brush = new SolidBrush(Color.White);
             }
             #endregion
 
-            type = power;
+            type = power; 
             x = _x;
             y = _y;
-            colour = powerColour;
         }
 
        public void Move()

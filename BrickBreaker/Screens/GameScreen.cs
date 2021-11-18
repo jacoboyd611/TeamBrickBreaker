@@ -272,8 +272,7 @@ namespace BrickBreaker
             // Draw Power Ups
             foreach (PowerUp p in powerUps)
             {
-                powerUpBrush = new SolidBrush(p.colour);
-                e.Graphics.FillRectangle(powerUpBrush, p.x, p.y, powerUpSize, powerUpSize);
+                e.Graphics.FillRectangle(p.brush, p.x, p.y, powerUpSize, powerUpSize);
             }
             //draws lifes
             if (lives == 3) { e.Graphics.DrawImage(Properties.Resources.jellyfish, 152, 552, 51, 67); }
