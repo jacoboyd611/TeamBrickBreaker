@@ -19,6 +19,7 @@ namespace BrickBreaker
     public partial class GameScreen : UserControl
     {
         int level = 2;
+        Bitmap jellyFish = Properties.Resources.jellyfish;
         #region global values
 
         //player1 button control keys - DO NOT CHANGE
@@ -36,9 +37,11 @@ namespace BrickBreaker
 
         // Brushes
         SolidBrush paddleBrush = new SolidBrush(Color.White);
-        SolidBrush ballBrush = new SolidBrush(Color.White);
+        SolidBrush ballBrush = new SolidBrush(Color.Yellow);
+        Pen ballBorder = new Pen(Color.Black);
         SolidBrush blockBrush = new SolidBrush(Color.Red);
         SolidBrush powerUpBrush;
+
 
         //PowerUp list 
         List<PowerUp> powerUps = new List<PowerUp>();
@@ -48,11 +51,7 @@ namespace BrickBreaker
         //random
         Random rnd = new Random();
 
-        List<Image> backgrounds = new List<Image>();
         public static List<Ball> balls = new List<Ball>();
-        public static Image[] image = new Image[] { Properties.Resources.jellyfishFields };
-
-
         #endregion
 
         public GameScreen()
@@ -65,7 +64,6 @@ namespace BrickBreaker
         public void OnStart()
         {
             balls.Clear();
-            BackgroundImage = image[0];
             //set life counter
             lives = 3;
 
@@ -97,6 +95,7 @@ namespace BrickBreaker
 
             #endregion
 
+            
             // start the game engine loop
             gameTimer.Enabled = true;
         }
@@ -285,13 +284,15 @@ namespace BrickBreaker
             // Draws blocks
             foreach (Block b in blocks)
             {
-                e.Graphics.FillRectangle(new SolidBrush(Color.FromName(b.colour)), b.x, b.y, b.width, b.height);
+                e.Graphics.FillRectangle(b.brush, b.x, b.y, b.width, b.height);
+                e.Graphics.FillRectangle(b.brush, b.x, b.y, b.width, b.height);
             }
 
             // Draws ball
             foreach (Ball b in balls)
             {
-                e.Graphics.FillRectangle(ballBrush, b.x, b.y, b.size, b.size);
+                e.Graphics.FillEllipse(ballBrush, b.x, b.y, b.size, b.size);
+                e.Graphics.DrawEllipse(ballBorder, b.x, b.y, b.size, b.size);
             }
             // Draw Power Ups
             foreach (PowerUp p in powerUps)
@@ -300,9 +301,9 @@ namespace BrickBreaker
                 e.Graphics.FillRectangle(powerUpBrush, p.x, p.y, powerUpSize, powerUpSize);
             }
             //draws lifes
-            if (lives == 3) { e.Graphics.DrawImage(Properties.Resources.jellyfish, 152, 552, 51, 67); }
-            if (lives >= 2) { e.Graphics.DrawImage(Properties.Resources.jellyfish, 84, 552, 51, 67); }
-            if (lives >= 1) { e.Graphics.DrawImage(Properties.Resources.jellyfish, 12, 552, 51, 67); }
+            if (lives == 3) { e.Graphics.DrawImage(jellyFish, 152, 552, 51, 67); }
+            if (lives >= 2) { e.Graphics.DrawImage(jellyFish, 84, 552, 51, 67); }
+            if (lives>=1) { e.Graphics.DrawImage(jellyFish, 12, 552, 51, 67); }
         }
 
         public void MakePowerUp(float x, float y)
@@ -326,11 +327,15 @@ namespace BrickBreaker
                 b.width = Convert.ToInt32(reader.GetAttribute("width"));
                 b.height = Convert.ToInt32(reader.GetAttribute("height"));
                 b.hp = Convert.ToInt32(reader.GetAttribute("value"));
-                b.colour = reader.GetAttribute("colour");
-                if (b.colour != null) { blocks.Add(b); }
+                string colour = reader.GetAttribute("colour");
+
+                if (colour != null) 
+                {
+                    b.brush = new SolidBrush(Color.FromName(colour));
+                    blocks.Add(b); 
+                }
             }
             reader.Close();
         }
     }
 }
-
