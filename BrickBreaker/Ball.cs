@@ -56,12 +56,12 @@ namespace BrickBreaker
                 if (left) { xSpeed = -Math.Abs(xSpeed); }
                 if (right) { xSpeed = Math.Abs(xSpeed); }             
             }
-            if (ballRec.IntersectsWith(paddleRec) && GameScreen.rightArrowDown == false && GameScreen.leftArrowDown == false)
+            else if (ballRec.IntersectsWith(paddleRec) && ySpeed <= 0)
             {
                 var ballPosition = x - p.x;
                 var hitPercent = (ballPosition / (p.width - size)) - .5;
                 xSpeed = (int)(hitPercent * 10);
-                ySpeed *= 1;
+                ySpeed *= -1;
             }
         }
 
