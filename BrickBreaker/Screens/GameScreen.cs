@@ -40,7 +40,7 @@ namespace BrickBreaker
         SolidBrush paddleBrush = new SolidBrush(Color.White);
 
         SolidBrush ballBrush = new SolidBrush(Color.Yellow);
-        Pen ballBorder = new Pen(Color.Black);
+        Pen borderPen = new Pen(Color.Black);
 
 
 
@@ -87,8 +87,8 @@ namespace BrickBreaker
             int ballY = this.Height - paddle.height - 80;
 
             // Creates a new ball
-            int xSpeed = 6;
-            int ySpeed = 6;
+            int xSpeed = 4;
+            int ySpeed = 4;
             int ballSize = 20;
             ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
             balls.Add(ball);
@@ -234,8 +234,8 @@ namespace BrickBreaker
                 {
                     if (powerUps[i].type == "scatterShot")
                     {
-                        int xSpeed = 6;
-                        int ySpeed = 6;
+                        int xSpeed = 4;
+                        int ySpeed = 4;
                         int ballSize = 20;
                         Ball ball = new Ball(paddle.x, paddle.y, xSpeed, ySpeed, ballSize);
                         balls.Add(ball);
@@ -282,19 +282,20 @@ namespace BrickBreaker
         {
             // Draws paddle
             e.Graphics.FillRectangle(paddleBrush, paddle.x, paddle.y, paddle.width, paddle.height);
+            e.Graphics.DrawRectangle(borderPen, paddle.x, paddle.y, paddle.width, paddle.height);
 
             // Draws blocks
             foreach (Block b in blocks)
             {
                 e.Graphics.FillRectangle(b.brush, b.x, b.y, b.width, b.height);
-                e.Graphics.DrawRectangle(ballBorder, b.x, b.y, b.width, b.height);
+                e.Graphics.DrawRectangle(borderPen, b.x, b.y, b.width, b.height);
             }
 
             // Draws ball
             foreach (Ball b in balls)
             {
                 e.Graphics.FillEllipse(ballBrush, b.x, b.y, b.size, b.size);
-                e.Graphics.DrawEllipse(ballBorder, b.x, b.y, b.size, b.size);
+                e.Graphics.DrawEllipse(borderPen, b.x, b.y, b.size, b.size);
             }
             // Draw Power Ups
             foreach (PowerUp p in powerUps)
