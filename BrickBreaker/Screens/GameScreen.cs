@@ -18,7 +18,7 @@ namespace BrickBreaker
 {
     public partial class GameScreen : UserControl
     {
-        int level = 2;
+        int level = 1;
         #region global values
 
         //player1 button control keys - DO NOT CHANGE
@@ -36,7 +36,7 @@ namespace BrickBreaker
 
         // Brushes
         SolidBrush paddleBrush = new SolidBrush(Color.White);
-        SolidBrush ballBrush = new SolidBrush(Color.White);
+        SolidBrush ballBrush = new SolidBrush(Color.DarkGreen);
         SolidBrush blockBrush = new SolidBrush(Color.Red);
         SolidBrush powerUpBrush;
 
