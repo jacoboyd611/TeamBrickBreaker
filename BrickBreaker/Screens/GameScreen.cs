@@ -51,7 +51,7 @@ namespace BrickBreaker
         Random rnd = new Random();
 
         public static List<Ball> balls = new List<Ball>();
-        public static Image[] image = new Image[] { Properties.Resources.krustyKrab, Properties.Resources.spongebobHouse, Properties.Resources.squidwardsHouse, Properties.Resources.patricksHouse, Properties.Resources.jellyfishFields, Properties.Resources.gooLagoon, Properties.Resources.bikini_bottom, Properties.Resources.gloveWorld };
+        public static Color[] colour = new Color[] { Color.Gray };
 
 
         #endregion
@@ -66,7 +66,8 @@ namespace BrickBreaker
         public void OnStart()
         {
             balls.Clear();
-            BackgroundImage = image[0];
+            //BackgroundImage = image[0];
+            BackColor = colour[0];
             //set life counter
             lives = 3;
 
