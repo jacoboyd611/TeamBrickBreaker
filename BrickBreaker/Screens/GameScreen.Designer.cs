@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
+            this.testLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // gameTimer
@@ -38,25 +39,38 @@
             this.gameTimer.Interval = 1;
             this.gameTimer.Tick += new System.EventHandler(this.gameTimer_Tick);
             // 
+            // testLabel
+            // 
+            this.testLabel.AutoSize = true;
+            this.testLabel.BackColor = System.Drawing.Color.White;
+            this.testLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.testLabel.Location = new System.Drawing.Point(4, 4);
+            this.testLabel.Name = "testLabel";
+            this.testLabel.Size = new System.Drawing.Size(178, 13);
+            this.testLabel.TabIndex = 0;
+            this.testLabel.Text = "test Label (NOT FOR FINAL BUILD)";
+            // 
             // GameScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImage = global::BrickBreaker.Properties.Resources.jellyfishFields;
+            this.Controls.Add(this.testLabel);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GameScreen";
-            this.Size = new System.Drawing.Size(1100, 700);
+            this.Size = new System.Drawing.Size(880, 560);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.GameScreen_Paint);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.GameScreen_KeyUp);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.GameScreen_PreviewKeyDown);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Timer gameTimer;
+        private System.Windows.Forms.Label testLabel;
     }
 }

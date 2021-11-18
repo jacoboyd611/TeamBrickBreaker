@@ -79,14 +79,15 @@ namespace BrickBreaker
             int paddleY = (this.Height - paddleHeight) - 60;
             int paddleSpeed = 8;
             paddle = new Paddle(paddleX, paddleY, paddleWidth, paddleHeight, paddleSpeed, Color.White);
+            paddle.wumbo = false;
 
             // setup starting ball values
             int ballX = this.Width / 2 - 10;
             int ballY = this.Height - paddle.height - 80;
 
             // Creates a new ball
-            int xSpeed = 6;
-            int ySpeed = 6;
+            int xSpeed = 8;
+            int ySpeed = 8;
             int ballSize = 20;
             ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
             balls.Add(ball);
@@ -134,6 +135,15 @@ namespace BrickBreaker
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+            try
+            {
+                testLabel.Text = $"{paddle.wumboTime}";
+            }
+            catch
+            {
+
+            }
+
             // Move the paddle
             if (leftArrowDown && paddle.x > 0)
             {
@@ -166,17 +176,13 @@ namespace BrickBreaker
                     {
                         ball.x = ((paddle.x - (ball.size / 2)) + (paddle.width / 2));
                         ball.y = (this.Height - paddle.height) - 85;
-                    }
 
-                    if (balls.Count() == 1)
-                    {
                         lives--;
-                    } 
+                    }
                     else
                     {
                         balls.Remove(balls[i]);
                     }
-
 
                     if (lives == 0)
                     {
@@ -233,8 +239,27 @@ namespace BrickBreaker
                         balls.Add(ball);
 
                     }
+
+                    else if (powerUps[i].type == "wumbo" && paddle.wumbo == false)
+                    {
+                        paddle.width += 200;
+                        paddle.x -= 100;
+                        paddle.wumbo = true;
+                        paddle.wumboTime = 300;
+                    }
                     powerUps.Remove(powerUps[i]);
                 }
+            }
+
+            if (paddle.wumboTime > 0)
+            {
+                paddle.wumboTime--;
+            }
+            else if (paddle.wumbo == true)
+            {
+                paddle.wumbo = false;
+                paddle.width -= 200;
+               paddle.x += 100;
             }
             Refresh();
         }
@@ -277,7 +302,7 @@ namespace BrickBreaker
             //draws lifes
             if (lives == 3) { e.Graphics.DrawImage(Properties.Resources.jellyfish, 152, 552, 51, 67); }
             if (lives >= 2) { e.Graphics.DrawImage(Properties.Resources.jellyfish, 84, 552, 51, 67); }
-            if (lives>=1) { e.Graphics.DrawImage(Properties.Resources.jellyfish, 12, 552, 51, 67); }
+            if (lives >= 1) { e.Graphics.DrawImage(Properties.Resources.jellyfish, 12, 552, 51, 67); }
         }
 
         public void MakePowerUp(float x, float y)

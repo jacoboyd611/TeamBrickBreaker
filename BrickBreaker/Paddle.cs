@@ -4,8 +4,9 @@ namespace BrickBreaker
 {
     public class Paddle
     {
-        public int x, y, width, height, speed;
+        public int x, y, width, height, speed, wumboTime;
         public Color colour;
+        public bool wumbo;
 
         public Paddle(int _x, int _y, int _width, int _height, int _speed, Color _colour)
         {
