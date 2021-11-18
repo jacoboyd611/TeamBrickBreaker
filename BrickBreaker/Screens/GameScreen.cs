@@ -24,7 +24,7 @@ namespace BrickBreaker
         #region global values
 
         //player1 button control keys - DO NOT CHANGE
-        Boolean leftArrowDown, rightArrowDown; 
+        public static Boolean leftArrowDown, rightArrowDown; 
 
         // Game values
         int lives;
@@ -87,8 +87,8 @@ namespace BrickBreaker
             int ballY = this.Height - paddle.height - 80;
 
             // Creates a new ball
-            int xSpeed = 6;
-            int ySpeed = 6;
+            int xSpeed = 4;
+            int ySpeed = 4;
             int ballSize = 20;
             ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
             balls.Add(ball);
@@ -154,6 +154,14 @@ namespace BrickBreaker
             if (rightArrowDown && paddle.x < (this.Width - paddle.width))
             {
                 paddle.Move("right");
+            }
+            if (leftArrowDown == false)
+            {
+                paddle.Move("noMove");
+            }
+            if (rightArrowDown == false)
+            {
+                paddle.Move("noMove");
             }
 
             // Move ball
@@ -234,8 +242,8 @@ namespace BrickBreaker
                 {
                     if (powerUps[i].type == "scatterShot")
                     {
-                        int xSpeed = 6;
-                        int ySpeed = 6;
+                        int xSpeed = 4;
+                        int ySpeed = 4;
                         int ballSize = 20;
                         Ball ball = new Ball(paddle.x, paddle.y, xSpeed, ySpeed, ballSize);
                         balls.Add(ball);
