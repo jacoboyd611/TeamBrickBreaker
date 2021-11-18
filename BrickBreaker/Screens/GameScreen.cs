@@ -288,7 +288,7 @@ namespace BrickBreaker
             foreach (Block b in blocks)
             {
                 e.Graphics.FillRectangle(b.brush, b.x, b.y, b.width, b.height);
-                e.Graphics.DrawRectangle(borderPen, b.x, b.y, b.width, b.height);
+                e.Graphics.DrawRectangle(borderPen, b.x, b.y, b.width, b.height); 
             }
 
             // Draws ball
