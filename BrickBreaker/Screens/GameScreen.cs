@@ -66,7 +66,6 @@ namespace BrickBreaker
         public void OnStart()
         {
             balls.Clear();
-            //BackgroundImage = image[0];
             BackColor = colour[0];
             //set life counter
             lives = 3;
@@ -74,7 +73,7 @@ namespace BrickBreaker
             //set all button presses to false.
             leftArrowDown = rightArrowDown = false;
 
-            // setup starting paddle values and create paddle object
+            // setup starting paddle values and create paddle object 
             int paddleWidth = 80;
             int paddleHeight = 20;
             int paddleX = ((this.Width / 2) - (paddleWidth / 2));
