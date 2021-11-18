@@ -18,12 +18,13 @@ namespace BrickBreaker
 {
     public partial class GameScreen : UserControl
     {
+
         int level = 2;
         Bitmap jellyFish = Properties.Resources.jellyfish;
         #region global values
 
         //player1 button control keys - DO NOT CHANGE
-        Boolean leftArrowDown, rightArrowDown;
+        Boolean leftArrowDown, rightArrowDown; 
 
         // Game values
         int lives;
@@ -37,9 +38,11 @@ namespace BrickBreaker
 
         // Brushes
         SolidBrush paddleBrush = new SolidBrush(Color.White);
+
         SolidBrush ballBrush = new SolidBrush(Color.Yellow);
         Pen ballBorder = new Pen(Color.Black);
         SolidBrush powerUpBrush;
+
 
 
         //PowerUp list 
@@ -51,6 +54,8 @@ namespace BrickBreaker
         Random rnd = new Random();
 
         public static List<Ball> balls = new List<Ball>();
+
+        public static Color[] colour = new Color[] { Color.Gray };
         #endregion
 
         public GameScreen()
@@ -76,6 +81,7 @@ namespace BrickBreaker
             int paddleY = (this.Height - paddleHeight) - 60;
             int paddleSpeed = 8;
             paddle = new Paddle(paddleX, paddleY, paddleWidth, paddleHeight, paddleSpeed, Color.White);
+            paddle.wumbo = false;
 
             // setup starting ball values
             int ballX = this.Width / 2 - 10;
@@ -132,6 +138,15 @@ namespace BrickBreaker
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+            try
+            {
+                testLabel.Text = $"{paddle.wumboTime}";
+            }
+            catch
+            {
+
+            }
+
             // Move the paddle
             if (leftArrowDown && paddle.x > 0)
             {
@@ -164,12 +179,9 @@ namespace BrickBreaker
                     {
                         ball.x = ((paddle.x - (ball.size / 2)) + (paddle.width / 2));
                         ball.y = (this.Height - paddle.height) - 85;
-                    }
 
-                    if (balls.Count() == 1)
-                    {
                         lives--;
-                    } 
+                    }
                     else
                     {
                         balls.Remove(balls[i]);
@@ -230,8 +242,27 @@ namespace BrickBreaker
                         balls.Add(ball);
 
                     }
+
+                    else if (powerUps[i].type == "wumbo" && paddle.wumbo == false)
+                    {
+                        paddle.width += 200;
+                        paddle.x -= 100;
+                        paddle.wumbo = true;
+                        paddle.wumboTime = 300;
+                    }
                     powerUps.Remove(powerUps[i]);
                 }
+            }
+
+            if (paddle.wumboTime > 0)
+            {
+                paddle.wumboTime--;
+            }
+            else if (paddle.wumbo == true)
+            {
+                paddle.wumbo = false;
+                paddle.width -= 200;
+               paddle.x += 100;
             }
             Refresh();
         }
