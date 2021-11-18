@@ -39,7 +39,6 @@ namespace BrickBreaker
         SolidBrush paddleBrush = new SolidBrush(Color.White);
         SolidBrush ballBrush = new SolidBrush(Color.Yellow);
         Pen ballBorder = new Pen(Color.Black);
-        SolidBrush blockBrush = new SolidBrush(Color.Red);
         SolidBrush powerUpBrush;
 
 
@@ -252,14 +251,13 @@ namespace BrickBreaker
         public void GameScreen_Paint(object sender, PaintEventArgs e)
         {
             // Draws paddle
-            paddleBrush.Color = paddle.colour;
             e.Graphics.FillRectangle(paddleBrush, paddle.x, paddle.y, paddle.width, paddle.height);
 
             // Draws blocks
             foreach (Block b in blocks)
             {
                 e.Graphics.FillRectangle(b.brush, b.x, b.y, b.width, b.height);
-                e.Graphics.FillRectangle(b.brush, b.x, b.y, b.width, b.height);
+                e.Graphics.DrawRectangle(ballBorder, b.x, b.y, b.width, b.height);
             }
 
             // Draws ball
@@ -271,8 +269,7 @@ namespace BrickBreaker
             // Draw Power Ups
             foreach (PowerUp p in powerUps)
             {
-                powerUpBrush = new SolidBrush(p.colour);
-                e.Graphics.FillRectangle(powerUpBrush, p.x, p.y, powerUpSize, powerUpSize);
+                e.Graphics.FillRectangle(p.brush, p.x, p.y, powerUpSize, powerUpSize);
             }
             //draws lifes
             if (lives == 3) { e.Graphics.DrawImage(jellyFish, 152, 552, 51, 67); }

@@ -42,7 +42,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackColor = System.Drawing.Color.Black;
+            this.BackColor = System.Drawing.Color.Turquoise;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(4);
