@@ -23,7 +23,7 @@ namespace BrickBreaker
         #region global values
 
         //player1 button control keys - DO NOT CHANGE
-        Boolean leftArrowDown, rightArrowDown;
+        Boolean leftArrowDown, rightArrowDown; 
 
         // Game values
         int lives;
@@ -52,6 +52,8 @@ namespace BrickBreaker
         Random rnd = new Random();
 
         public static List<Ball> balls = new List<Ball>();
+
+        public static Color[] colour = new Color[] { Color.Gray };
         #endregion
 
         public GameScreen()
