@@ -18,6 +18,7 @@ namespace BrickBreaker
 {
     public partial class GameScreen : UserControl
     {
+
         int level = 2;
         Bitmap jellyFish = Properties.Resources.jellyfish;
         #region global values
@@ -37,10 +38,11 @@ namespace BrickBreaker
 
         // Brushes
         SolidBrush paddleBrush = new SolidBrush(Color.White);
+
         SolidBrush ballBrush = new SolidBrush(Color.Yellow);
         Pen ballBorder = new Pen(Color.Black);
         SolidBrush blockBrush = new SolidBrush(Color.Red);
-        SolidBrush powerUpBrush;
+
 
 
         //PowerUp list 
