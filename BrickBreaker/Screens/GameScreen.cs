@@ -36,9 +36,11 @@ namespace BrickBreaker
 
         // Brushes
         SolidBrush paddleBrush = new SolidBrush(Color.White);
-        SolidBrush ballBrush = new SolidBrush(Color.White);
+        SolidBrush ballBrush = new SolidBrush(Color.Yellow);
+        Pen ballBorder = new Pen(Color.Black);
         SolidBrush blockBrush = new SolidBrush(Color.Red);
         SolidBrush powerUpBrush;
+
 
         //PowerUp list 
         List<PowerUp> powerUps = new List<PowerUp>();
@@ -48,9 +50,8 @@ namespace BrickBreaker
         //random
         Random rnd = new Random();
 
-        List<Image> backgrounds = new List<Image>();
         public static List<Ball> balls = new List<Ball>();
-        public static Image[] image = new Image[] { Properties.Resources.jellyfishFields };
+        public static Image[] image = new Image[] { Properties.Resources.krustyKrab, Properties.Resources.spongebobHouse, Properties.Resources.squidwardsHouse, Properties.Resources.patricksHouse, Properties.Resources.jellyfishFields, Properties.Resources.gooLagoon, Properties.Resources.bikini_bottom, Properties.Resources.gloveWorld };
 
 
         #endregion
@@ -177,7 +178,6 @@ namespace BrickBreaker
                         balls.Remove(balls[i]);
                     }
 
-
                     if (lives == 0)
                     {
                         gameTimer.Enabled = false;
@@ -266,7 +266,8 @@ namespace BrickBreaker
             // Draws ball
             foreach (Ball b in balls)
             {
-                e.Graphics.FillRectangle(ballBrush, b.x, b.y, b.size, b.size);
+                e.Graphics.FillEllipse(ballBrush, b.x, b.y, b.size, b.size);
+                e.Graphics.DrawEllipse(ballBorder, b.x, b.y, b.size, b.size);
             }
             // Draw Power Ups
             foreach (PowerUp p in powerUps)
