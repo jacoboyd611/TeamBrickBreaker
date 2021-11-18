@@ -11,6 +11,8 @@ namespace BrickBreaker
     {
         public int width;
         public int height;
+        public Brush brush;
+
 
         public int x;
         public int y; 
