@@ -41,7 +41,6 @@ namespace BrickBreaker
 
         SolidBrush ballBrush = new SolidBrush(Color.Yellow);
         Pen ballBorder = new Pen(Color.Black);
-        SolidBrush powerUpBrush;
 
 
 
