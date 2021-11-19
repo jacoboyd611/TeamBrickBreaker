@@ -52,16 +52,17 @@ namespace BrickBreaker
 
             if (ballRec.IntersectsWith(paddleRec) && ySpeed >= 0)
             {
-                ySpeed *= -1;
+                ySpeed *= rand.Next(-10, 11);
+                xSpeed *= rand.Next(-10, 11);
                 if (left) { xSpeed = -Math.Abs(xSpeed); }
                 if (right) { xSpeed = Math.Abs(xSpeed); }             
             }
-            else if (ballRec.IntersectsWith(paddleRec) && ySpeed <= 0)
+            if (ballRec.IntersectsWith(paddleRec) && GameScreen.rightArrowDown == false && GameScreen.leftArrowDown == false)
             {
                 var ballPosition = x - p.x;
                 var hitPercent = (ballPosition / (p.width - size)) - .5;
                 xSpeed = (int)(hitPercent * 10);
-                ySpeed *= -1;
+                ySpeed *= 1;
             }
         }
 
@@ -70,6 +71,7 @@ namespace BrickBreaker
             // Collision with left wall
             if (x <= 0)
             {
+
                 xSpeed *= -1;
             }
             // Collision with right wall
