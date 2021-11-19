@@ -67,7 +67,6 @@ namespace BrickBreaker
         public void OnStart()
         {
             balls.Clear();
-            BackColor = colour[0];
             //set life counter
             lives = 3;
 
