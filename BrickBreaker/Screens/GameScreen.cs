@@ -19,7 +19,7 @@ namespace BrickBreaker
     public partial class GameScreen : UserControl
     {
 
-        int level = 2;
+        int level = 7;
         Bitmap jellyFish = Properties.Resources.jellyfish;
         #region global values
 
@@ -40,7 +40,7 @@ namespace BrickBreaker
         SolidBrush paddleBrush = new SolidBrush(Color.White);
 
         SolidBrush ballBrush = new SolidBrush(Color.Yellow);
-        Pen ballBorder = new Pen(Color.Black);
+        Pen borderPen = new Pen(Color.Black);
 
 
 
@@ -78,7 +78,7 @@ namespace BrickBreaker
             int paddleHeight = 20;
             int paddleX = ((this.Width / 2) - (paddleWidth / 2));
             int paddleY = (this.Height - paddleHeight) - 60;
-            int paddleSpeed = 8;
+            int paddleSpeed = 12;
             paddle = new Paddle(paddleX, paddleY, paddleWidth, paddleHeight, paddleSpeed, Color.White);
             paddle.wumbo = false;
 
@@ -87,8 +87,8 @@ namespace BrickBreaker
             int ballY = this.Height - paddle.height - 80;
 
             // Creates a new ball
-            int xSpeed = 6;
-            int ySpeed = 6;
+            int xSpeed = 8;
+            int ySpeed = 8;
             int ballSize = 20;
             ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
             balls.Add(ball);
@@ -137,15 +137,6 @@ namespace BrickBreaker
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
-            try
-            {
-                testLabel.Text = $"{paddle.wumboTime}";
-            }
-            catch
-            {
-
-            }
-
             // Move the paddle
             if (leftArrowDown && paddle.x > 0)
             {
@@ -160,15 +151,11 @@ namespace BrickBreaker
             foreach (Ball b in balls)
             {
                 b.Move();
-            }
-
-            // Check for collision with top and side walls
-            foreach (Ball b in balls)
-            {
                 b.WallCollision(this);
+                b.PaddleCollision(paddle, leftArrowDown, rightArrowDown);
             }
 
-            // Check for ball hitting bottom of screen
+            #region Bottom Collision
             for (int i = 0; i < balls.Count(); i++)
             {
                 if (balls[i].BottomCollision(this))
@@ -193,17 +180,13 @@ namespace BrickBreaker
                     }
                 }
             }
+            #endregion
 
-            // Check for collision of ball with paddle, (incl. paddle movement)
+            #region Block Collision
             foreach (Ball b in balls)
             {
-                b.PaddleCollision(paddle, leftArrowDown, rightArrowDown);
-            }
-            // Check if ball has collided with any blocks
-            for (int i = 0; i < blocks.Count(); i++)
-            {
-                foreach (Ball b in balls)
-                {
+                for (int i = 0; i < blocks.Count(); i++)
+                    {
                     if (b.BlockCollision(blocks[i]))
                     {
                         //5% chance to make power up when block breaks
@@ -220,26 +203,26 @@ namespace BrickBreaker
                     }
                 }
             }
+            #endregion
+
             // power up move
             foreach (PowerUp p in powerUps)
             {
                 p.Move();
             }
 
-            //power up collision
-
+            #region power up collision
             for (int i = 0; i < powerUps.Count(); i++)
             {
                 if (powerUps[i].PaddleCollision(paddle))
                 {
                     if (powerUps[i].type == "scatterShot")
                     {
-                        int xSpeed = 6;
-                        int ySpeed = 6;
+                        int xSpeed = 8;
+                        int ySpeed = 8;
                         int ballSize = 20;
                         Ball ball = new Ball(paddle.x, paddle.y, xSpeed, ySpeed, ballSize);
                         balls.Add(ball);
-
                     }
 
                     else if (powerUps[i].type == "wumbo" && paddle.wumbo == false)
@@ -252,6 +235,7 @@ namespace BrickBreaker
                     powerUps.Remove(powerUps[i]);
                 }
             }
+            #endregion
 
             if (paddle.wumboTime > 0)
             {
@@ -261,7 +245,7 @@ namespace BrickBreaker
             {
                 paddle.wumbo = false;
                 paddle.width -= 200;
-               paddle.x += 100;
+                paddle.x += 100;
             }
             Refresh();
         }
@@ -282,19 +266,20 @@ namespace BrickBreaker
         {
             // Draws paddle
             e.Graphics.FillRectangle(paddleBrush, paddle.x, paddle.y, paddle.width, paddle.height);
+            e.Graphics.DrawRectangle(borderPen, paddle.x, paddle.y, paddle.width, paddle.height);
 
             // Draws blocks
             foreach (Block b in blocks)
             {
                 e.Graphics.FillRectangle(b.brush, b.x, b.y, b.width, b.height);
-                e.Graphics.DrawRectangle(ballBorder, b.x, b.y, b.width, b.height);
+                e.Graphics.DrawRectangle(borderPen, b.x, b.y, b.width, b.height); 
             }
 
             // Draws ball
             foreach (Ball b in balls)
             {
                 e.Graphics.FillEllipse(ballBrush, b.x, b.y, b.size, b.size);
-                e.Graphics.DrawEllipse(ballBorder, b.x, b.y, b.size, b.size);
+                e.Graphics.DrawEllipse(borderPen, b.x, b.y, b.size, b.size);
             }
             // Draw Power Ups
             foreach (PowerUp p in powerUps)
