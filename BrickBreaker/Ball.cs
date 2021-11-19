@@ -56,13 +56,13 @@ namespace BrickBreaker
                 if (left) { xSpeed = -Math.Abs(xSpeed); }
                 if (right) { xSpeed = Math.Abs(xSpeed); }             
             }
-            else if (ballRec.IntersectsWith(paddleRec) && ySpeed <= 0)
-            {
-                var ballPosition = x - p.x;
-                var hitPercent = (ballPosition / (p.width - size)) - .5;
-                xSpeed = (int)(hitPercent * 10);
-                ySpeed *= -1;
-            }
+            //else if (ballRec.IntersectsWith(paddleRec) && ySpeed <= 0)
+            //{
+            //    var ballPosition = x - p.x;
+            //    var hitPercent = (ballPosition / (p.width - size)) - .5;
+            //    xSpeed = (int)(hitPercent * 10);
+            //    ySpeed *= -1;
+            //}
         }
 
         public void WallCollision(UserControl UC)
