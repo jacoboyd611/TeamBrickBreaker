@@ -9,6 +9,7 @@ namespace BrickBreaker
     {
         public int x, y, xSpeed, ySpeed, size;
         public Color colour;
+      
 
         public static Random rand = new Random();
 
@@ -28,18 +29,21 @@ namespace BrickBreaker
             y = y + ySpeed;
         }
 
-        public bool BlockCollision(Block b)
+        public bool BlockCollision(Block b, bool krabbyPatty)
         {
             Rectangle blockRec = new Rectangle(b.x, b.y, b.width, b.height);
             Rectangle ballRec = new Rectangle(x, y, size, size);
 
-            if (ballRec.IntersectsWith(blockRec) && y >= b.y + b.height - 5 || ballRec.IntersectsWith(blockRec) && y <= b.y + 5)
+            if (!krabbyPatty)
             {
-                ySpeed *= -1;
-            }
-            else if (ballRec.IntersectsWith(blockRec) && x >= b.x + b.width - 5 || ballRec.IntersectsWith(blockRec) && x <= b.x + 5)
-            {
-                xSpeed *= -1;
+                if (ballRec.IntersectsWith(blockRec) && y >= b.y + b.height - 5 || ballRec.IntersectsWith(blockRec) && y <= b.y + 5)
+                {
+                    ySpeed *= -1;
+                }
+                else if (ballRec.IntersectsWith(blockRec) && x >= b.x + b.width - 5 || ballRec.IntersectsWith(blockRec) && x <= b.x + 5)
+                {
+                    xSpeed *= -1;
+                }
             }
 
             return blockRec.IntersectsWith(ballRec);
