@@ -71,6 +71,15 @@ namespace BrickBreaker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream endScreen {
+            get {
+                return ResourceManager.GetStream("endScreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap gloveWorld {
@@ -127,6 +136,15 @@ namespace BrickBreaker.Properties {
             get {
                 object obj = ResourceManager.GetObject("patricksHouse", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream ping {
+            get {
+                return ResourceManager.GetStream("ping", resourceCulture);
             }
         }
         

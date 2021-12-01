@@ -12,9 +12,13 @@ namespace BrickBreaker
 {
     public partial class EndScreen : UserControl
     {
+        System.Windows.Media.MediaPlayer backMedia = new System.Windows.Media.MediaPlayer();
         public EndScreen()
         {
             InitializeComponent();
+            backMedia.Open(new Uri(Application.StartupPath + "/Resources/endScreen.wav"));
+            backMedia.MediaEnded += new EventHandler(backMedia_MediaEnded);
+            backMedia.Play();
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -24,6 +28,7 @@ namespace BrickBreaker
 
         private void menuButton_Click(object sender, EventArgs e)
         {
+            backMedia.Stop();
             MenuScreen ms = new MenuScreen();
             Form form = this.FindForm();
 
@@ -33,9 +38,10 @@ namespace BrickBreaker
             ms.Location = new Point((form.Width - ms.Width) / 2, (form.Height - ms.Height) / 2);
         }
 
-        private void retryLevel_Click(object sender, EventArgs e)
+        private void backMedia_MediaEnded(object sender, EventArgs e)
         {
-
+            backMedia.Stop();
+            backMedia.Play();
         }
     }
 }

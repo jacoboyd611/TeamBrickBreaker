@@ -13,13 +13,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
 using System.Xml;
+using System.IO;
 
 namespace BrickBreaker
 {
     public partial class GameScreen : UserControl
     {
 
-        int level = 7;
+        int level = 1;
         Bitmap jellyFish = Properties.Resources.jellyfish;
         #region global values
 
@@ -54,21 +55,28 @@ namespace BrickBreaker
 
         public static List<Ball> balls = new List<Ball>();
 
-        public static Color[] colour = new Color[] { Color.Gray };
+        public static Color[] colour = new Color[] { Color.White, Color.Lavender, Color.DarkTurquoise, Color.PaleVioletRed, Color.PowderBlue, Color.MediumTurquoise, Color.Teal, Color.SkyBlue};
+
+        System.Windows.Media.MediaPlayer backMedia = new System.Windows.Media.MediaPlayer();
+
         #endregion
 
         public GameScreen()
         {
             InitializeComponent();
+            backMedia.Open(new Uri(Application.StartupPath + "/Resources/grassSkirt.wav"));
+            backMedia.MediaEnded += new EventHandler(backMedia_MediaEnded);
             ReadXml();
             OnStart();
         }
 
         public void OnStart()
         {
+            backMedia.Play();
             balls.Clear();
             //set life counter
             lives = 3;
+            BackColor = colour[level];
 
             //set all button presses to false.
             leftArrowDown = rightArrowDown = false;
@@ -189,6 +197,9 @@ namespace BrickBreaker
                     {
                     if (b.BlockCollision(blocks[i]))
                     {
+                        var blipSound = new System.Windows.Media.MediaPlayer();
+                        blipSound.Open(new Uri(Application.StartupPath + "/Resources/ping.wav"));
+                        blipSound.Play();
                         //5% chance to make power up when block breaks
                         MakePowerUp(blocks[i].x, blocks[i].y);
 
@@ -252,6 +263,7 @@ namespace BrickBreaker
 
         public void OnEnd()
         {
+            backMedia.Stop();
             // Goes to the game over screen
             Form form = this.FindForm();
             EndScreen ps = new EndScreen();
@@ -322,6 +334,12 @@ namespace BrickBreaker
                 }
             }
             reader.Close();
+        }
+
+        private void backMedia_MediaEnded(object sender, EventArgs e)
+        {
+            backMedia.Stop();
+            backMedia.Play();
         }
     }
 }
