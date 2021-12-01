@@ -21,6 +21,7 @@ namespace BrickBreaker
 
         int level = 7;
         Bitmap jellyFish = Properties.Resources.jellyfish;
+        bool krabbyPatty = false;
         #region global values
 
         //player1 button control keys - DO NOT CHANGE
@@ -49,6 +50,7 @@ namespace BrickBreaker
         int powerUpSize = 20;
 
 
+
         //random
         Random rnd = new Random();
 
@@ -72,6 +74,8 @@ namespace BrickBreaker
 
             //set all button presses to false.
             leftArrowDown = rightArrowDown = false;
+
+
 
             // setup starting paddle values and create paddle object
             int paddleWidth = 80;
@@ -98,7 +102,7 @@ namespace BrickBreaker
 
             #endregion
 
-            
+
             // start the game engine loop
             gameTimer.Enabled = true;
         }
@@ -193,6 +197,15 @@ namespace BrickBreaker
             #region Block Collision
             foreach (Ball b in balls)
             {
+                b.PaddleCollision(paddle, leftArrowDown, rightArrowDown);
+            }
+            // Check if ball has collided with any blocks
+            for (int i = 0; i < blocks.Count(); i++)
+            {
+                foreach (Ball b in balls)
+                {
+                    if (b.BlockCollision(blocks[i], krabbyPatty))
+                }
                 for (int i = 0; i < blocks.Count(); i++)
                     {
                     if (b.BlockCollision(blocks[i]))
@@ -240,6 +253,10 @@ namespace BrickBreaker
                         paddle.wumbo = true;
                         paddle.wumboTime = 300;
                     }
+                    else if (powerUps[i].type == "krabbyPatty")
+                    {
+                        krabbyPatty = true;
+                    }
                     powerUps.Remove(powerUps[i]);
                 }
             }
@@ -280,7 +297,7 @@ namespace BrickBreaker
             foreach (Block b in blocks)
             {
                 e.Graphics.FillRectangle(b.brush, b.x, b.y, b.width, b.height);
-                e.Graphics.DrawRectangle(borderPen, b.x, b.y, b.width, b.height); 
+                e.Graphics.DrawRectangle(borderPen, b.x, b.y, b.width, b.height);
             }
 
             // Draws ball
@@ -297,7 +314,7 @@ namespace BrickBreaker
             //draws lifes
             if (lives == 3) { e.Graphics.DrawImage(jellyFish, 152, 552, 51, 67); }
             if (lives >= 2) { e.Graphics.DrawImage(jellyFish, 84, 552, 51, 67); }
-            if (lives>=1) { e.Graphics.DrawImage(jellyFish, 12, 552, 51, 67); }
+            if (lives >= 1) { e.Graphics.DrawImage(jellyFish, 12, 552, 51, 67); }
         }
 
         public void MakePowerUp(float x, float y)
@@ -323,10 +340,10 @@ namespace BrickBreaker
                 b.hp = Convert.ToInt32(reader.GetAttribute("value"));
                 string colour = reader.GetAttribute("colour");
 
-                if (colour != null) 
+                if (colour != null)
                 {
                     b.brush = new SolidBrush(Color.FromName(colour));
-                    blocks.Add(b); 
+                    blocks.Add(b);
                 }
             }
             reader.Close();
