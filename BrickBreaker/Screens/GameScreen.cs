@@ -24,7 +24,7 @@ namespace BrickBreaker
         #region global values
 
         //player1 button control keys - DO NOT CHANGE
-        Boolean leftArrowDown, rightArrowDown; 
+        public static Boolean leftArrowDown, rightArrowDown; 
 
         // Game values
         int lives;
@@ -145,6 +145,14 @@ namespace BrickBreaker
             if (rightArrowDown && paddle.x < (this.Width - paddle.width))
             {
                 paddle.Move("right");
+            }
+            if (leftArrowDown == false)
+            {
+                paddle.Move("noMove");
+            }
+            if (rightArrowDown == false)
+            {
+                paddle.Move("noMove");
             }
 
             // Move ball
