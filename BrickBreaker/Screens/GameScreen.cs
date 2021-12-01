@@ -19,13 +19,13 @@ namespace BrickBreaker
     public partial class GameScreen : UserControl
     {
 
-        int level = 2;
+        int level = 7;
         Bitmap jellyFish = Properties.Resources.jellyfish;
         bool krabbyPatty = false;
         #region global values
 
         //player1 button control keys - DO NOT CHANGE
-        Boolean leftArrowDown, rightArrowDown;
+        public static Boolean leftArrowDown, rightArrowDown; 
 
         // Game values
         int lives;
@@ -82,7 +82,7 @@ namespace BrickBreaker
             int paddleHeight = 20;
             int paddleX = ((this.Width / 2) - (paddleWidth / 2));
             int paddleY = (this.Height - paddleHeight) - 60;
-            int paddleSpeed = 8;
+            int paddleSpeed = 12;
             paddle = new Paddle(paddleX, paddleY, paddleWidth, paddleHeight, paddleSpeed, Color.White);
             paddle.wumbo = false;
 
@@ -91,8 +91,8 @@ namespace BrickBreaker
             int ballY = this.Height - paddle.height - 80;
 
             // Creates a new ball
-            int xSpeed = 4;
-            int ySpeed = 4;
+            int xSpeed = 8;
+            int ySpeed = 8;
             int ballSize = 20;
             ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
             balls.Add(ball);
@@ -141,15 +141,6 @@ namespace BrickBreaker
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
-            try
-            {
-                testLabel.Text = $"{paddle.wumboTime}";
-            }
-            catch
-            {
-
-            }
-
             // Move the paddle
             if (leftArrowDown && paddle.x > 0)
             {
@@ -159,20 +150,24 @@ namespace BrickBreaker
             {
                 paddle.Move("right");
             }
+            if (leftArrowDown == false)
+            {
+                paddle.Move("noMove");
+            }
+            if (rightArrowDown == false)
+            {
+                paddle.Move("noMove");
+            }
 
             // Move ball
             foreach (Ball b in balls)
             {
                 b.Move();
-            }
-
-            // Check for collision with top and side walls
-            foreach (Ball b in balls)
-            {
                 b.WallCollision(this);
+                b.PaddleCollision(paddle, leftArrowDown, rightArrowDown);
             }
 
-            // Check for ball hitting bottom of screen
+            #region Bottom Collision
             for (int i = 0; i < balls.Count(); i++)
             {
                 if (balls[i].BottomCollision(this))
@@ -197,8 +192,9 @@ namespace BrickBreaker
                     }
                 }
             }
+            #endregion
 
-            // Check for collision of ball with paddle, (incl. paddle movement)
+            #region Block Collision
             foreach (Ball b in balls)
             {
                 b.PaddleCollision(paddle, leftArrowDown, rightArrowDown);
@@ -209,6 +205,10 @@ namespace BrickBreaker
                 foreach (Ball b in balls)
                 {
                     if (b.BlockCollision(blocks[i], krabbyPatty))
+                }
+                for (int i = 0; i < blocks.Count(); i++)
+                    {
+                    if (b.BlockCollision(blocks[i]))
                     {
                         //5% chance to make power up when block breaks
                         MakePowerUp(blocks[i].x, blocks[i].y);
@@ -224,26 +224,26 @@ namespace BrickBreaker
                     }
                 }
             }
+            #endregion
+
             // power up move
             foreach (PowerUp p in powerUps)
             {
                 p.Move();
             }
 
-            //power up collision
-
+            #region power up collision
             for (int i = 0; i < powerUps.Count(); i++)
             {
                 if (powerUps[i].PaddleCollision(paddle))
                 {
                     if (powerUps[i].type == "scatterShot")
                     {
-                        int xSpeed = 4;
-                        int ySpeed = 4;
+                        int xSpeed = 8;
+                        int ySpeed = 8;
                         int ballSize = 20;
                         Ball ball = new Ball(paddle.x, paddle.y, xSpeed, ySpeed, ballSize);
                         balls.Add(ball);
-
                     }
 
                     else if (powerUps[i].type == "wumbo" && paddle.wumbo == false)
@@ -260,6 +260,7 @@ namespace BrickBreaker
                     powerUps.Remove(powerUps[i]);
                 }
             }
+            #endregion
 
             if (paddle.wumboTime > 0)
             {
