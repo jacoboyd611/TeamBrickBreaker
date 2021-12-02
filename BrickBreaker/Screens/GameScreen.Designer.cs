@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
             this.testLabel = new System.Windows.Forms.Label();
+            this.pUpLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // gameTimer
@@ -50,16 +51,24 @@
             this.testLabel.TabIndex = 0;
             this.testLabel.Text = "test Label (NOT FOR FINAL BUILD)";
             // 
+            // pUpLabel
+            // 
+            this.pUpLabel.Location = new System.Drawing.Point(12, 17);
+            this.pUpLabel.Name = "pUpLabel";
+            this.pUpLabel.Size = new System.Drawing.Size(132, 162);
+            this.pUpLabel.TabIndex = 0;
+            this.pUpLabel.Text = "label1";
+            // 
             // GameScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.SkyBlue;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Controls.Add(this.pUpLabel);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GameScreen";
-            this.Size = new System.Drawing.Size(1100, 700);
+            this.Size = new System.Drawing.Size(880, 560);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.GameScreen_Paint);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.GameScreen_KeyUp);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.GameScreen_PreviewKeyDown);
@@ -71,5 +80,6 @@
 
         private System.Windows.Forms.Timer gameTimer;
         private System.Windows.Forms.Label testLabel;
+        private System.Windows.Forms.Label pUpLabel;
     }
 }
