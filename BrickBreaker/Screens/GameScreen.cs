@@ -26,12 +26,19 @@ namespace BrickBreaker
         Brush black = new SolidBrush(Color.Black);
         Font drawFont = new Font("Arial", 15);
         Pen wumboPen = new Pen(Color.Yellow, 10);
+        Pen krabbyPen = new Pen(Color.Red, 10);
+        Random rand = new Random();
+
+        Brush[] krabby = { new SolidBrush(Color.Red), new SolidBrush(Color.Orange) };
+        int flipFlop = 0;
         float arcLength = -360;
 
         System.Windows.Media.MediaPlayer blipSound = new System.Windows.Media.MediaPlayer();
         
         bool krabbyPatty = false;
         int krabbyTime = 0;
+        int totalKrabby = 0;
+        int totalWumbo = 0;
         #region global values
 
         //player1 button control keys - DO NOT CHANGE
@@ -199,7 +206,7 @@ namespace BrickBreaker
                 }
             }
 
-            if (lives == 0)
+            if (lives < 0)
             {
                 gameTimer.Enabled = false;
                 endValue = 2;
@@ -262,12 +269,14 @@ namespace BrickBreaker
                         paddle.width += 200;
                         paddle.x -= 100;
                         paddle.wumboTime = 300;
+                        totalWumbo = 300;
                         paddle.wumbo = true;
                     }
-                    else if (powerUps[i].type == "krabbyPatty")
+                    else if (powerUps[i].type == "krabbyPatty" && krabbyPatty == false)
                     {
                         krabbyPatty = true;
                         krabbyTime = 120;
+                        totalKrabby = krabbyTime;
                     }
                     powerUps.Remove(powerUps[i]);
                 }
@@ -286,23 +295,13 @@ namespace BrickBreaker
                 paddle.wumboTime = 300;
             }
 
-            if (krabbyTime > 0)
+            if (krabbyPatty && krabbyTime > 0)
             {
                 krabbyTime--;
             }
             else if (krabbyPatty)
             {
                 krabbyPatty = false;
-            }
-
-            pUpLabel.Text = "";
-            if (paddle.wumbo)
-            {
-                pUpLabel.Text += $"\nWumbo: {paddle.wumboTime}";
-            }
-            if (krabbyPatty)
-            {
-                pUpLabel.Text += $"\nKrabby Patty: {krabbyTime}";
             }
             Refresh();
         }
@@ -337,7 +336,12 @@ namespace BrickBreaker
             // Draws ball
             foreach (Ball b in balls)
             {
-                e.Graphics.FillEllipse(ballBrush, b.x, b.y, b.size, b.size);
+                if (krabbyPatty) 
+                {
+                    int i = rand.Next(0, 2);
+                    e.Graphics.FillEllipse(krabby[i], b.x, b.y, b.size, b.size); 
+                }
+                else { e.Graphics.FillEllipse(ballBrush, b.x, b.y, b.size, b.size); }
                 e.Graphics.DrawEllipse(borderPen, b.x, b.y, b.size, b.size);
             }
             // Draw Power Ups
@@ -350,12 +354,8 @@ namespace BrickBreaker
             if (lives >= 2) { e.Graphics.DrawImage(jellyFish, 84, 552, 51, 67); }
             if (lives >= 1) { e.Graphics.DrawImage(jellyFish, 12, 552, 51, 67); }
 
-            if (paddle.wumbo)
-            {
-                e.Graphics.DrawArc(wumboPen, 10, 10, 30, 30, 360, arcLength * paddle.wumboTime / 300);
-            }
-
-
+            if (paddle.wumbo) { e.Graphics.DrawArc(wumboPen, 20, 510, 30, 30, 360, arcLength * paddle.wumboTime / totalWumbo); }
+            if (krabbyPatty) { e.Graphics.DrawArc(krabbyPen, 92, 510, 30, 30, 360, arcLength * krabbyTime / totalKrabby); }
         }
 
         public void MakePowerUp(float x, float y)

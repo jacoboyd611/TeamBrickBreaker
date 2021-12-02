@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
             this.testLabel = new System.Windows.Forms.Label();
-            this.pUpLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // gameTimer
@@ -51,24 +50,12 @@
             this.testLabel.TabIndex = 0;
             this.testLabel.Text = "test Label (NOT FOR FINAL BUILD)";
             // 
-            // pUpLabel
-            // 
-            this.pUpLabel.Font = new System.Drawing.Font("Ink Free", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pUpLabel.Location = new System.Drawing.Point(15, 21);
-            this.pUpLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.pUpLabel.Name = "pUpLabel";
-            this.pUpLabel.Size = new System.Drawing.Size(164, 53);
-            this.pUpLabel.TabIndex = 0;
-            this.pUpLabel.Text = "label1";
-            this.pUpLabel.Visible = false;
-            // 
             // GameScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.SkyBlue;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.Controls.Add(this.pUpLabel);
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GameScreen";
@@ -84,6 +71,5 @@
 
         private System.Windows.Forms.Timer gameTimer;
         private System.Windows.Forms.Label testLabel;
-        private System.Windows.Forms.Label pUpLabel;
     }
 }
