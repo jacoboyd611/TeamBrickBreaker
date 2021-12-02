@@ -200,15 +200,11 @@ namespace BrickBreaker
                 b.PaddleCollision(paddle, leftArrowDown, rightArrowDown);
             }
             // Check if ball has collided with any blocks
-            for (int i = 0; i < blocks.Count(); i++)
+            foreach (Ball b in balls)
             {
-                foreach (Ball b in balls)
+                for (int i = 0; i < blocks.Count(); i++)
                 {
                     if (b.BlockCollision(blocks[i], krabbyPatty))
-                }
-                for (int i = 0; i < blocks.Count(); i++)
-                    {
-                    if (b.BlockCollision(blocks[i]))
                     {
                         //5% chance to make power up when block breaks
                         MakePowerUp(blocks[i].x, blocks[i].y);

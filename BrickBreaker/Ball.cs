@@ -83,16 +83,7 @@ namespace BrickBreaker
             Rectangle blockRec = new Rectangle(b.x, b.y, b.width, b.height);
             Rectangle futureBallRec = new Rectangle(x + xSpeed, y + ySpeed, size, size);
             if (!krabbyPatty)
-            {
-                if (ballRec.IntersectsWith(blockRec) && y >= b.y + b.height - 5 || ballRec.IntersectsWith(blockRec) && y <= b.y + 5)
-                {
-                    ySpeed *= -1;
-                }
-                else if (ballRec.IntersectsWith(blockRec) && x >= b.x + b.width - 5 || ballRec.IntersectsWith(blockRec) && x <= b.x + 5)
-                {
-                    xSpeed *= -1;
-                }
-              
+            {   
                 if (Collision(futureBallRec, blockRec) != "none")
                 {
                     futureCollision = Collision(futureBallRec, blockRec);
