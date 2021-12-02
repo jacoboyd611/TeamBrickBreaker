@@ -68,10 +68,10 @@
   <ItemGroup>
     <Compile Include="Ball.cs" />
     <Compile Include="Block.cs" />
-    <Compile Include="LevelSelect.cs">
+    <Compile Include="Screens\LevelSelect.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="LevelSelect.Designer.cs">
+    <Compile Include="Screens\LevelSelect.Designer.cs">
       <DependentUpon>LevelSelect.cs</DependentUpon>
     </Compile>
     <Compile Include="Screens\EndScreen.cs">
@@ -102,7 +102,7 @@
     <Compile Include="Screens\GameScreen.Designer.cs">
       <DependentUpon>GameScreen.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="LevelSelect.resx">
+    <EmbeddedResource Include="Screens\LevelSelect.resx">
       <DependentUpon>LevelSelect.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\EndScreen.resx">

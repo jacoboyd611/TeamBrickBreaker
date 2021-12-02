@@ -52,9 +52,10 @@ namespace BrickBreaker
             this.level1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.level1.Font = new System.Drawing.Font("Ink Free", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.level1.ForeColor = System.Drawing.Color.White;
-            this.level1.Location = new System.Drawing.Point(36, 170);
+            this.level1.Location = new System.Drawing.Point(119, 144);
+            this.level1.Margin = new System.Windows.Forms.Padding(4);
             this.level1.Name = "level1";
-            this.level1.Size = new System.Drawing.Size(176, 86);
+            this.level1.Size = new System.Drawing.Size(138, 118);
             this.level1.TabIndex = 0;
             this.level1.Text = "1";
             this.level1.UseVisualStyleBackColor = true;
@@ -69,9 +70,10 @@ namespace BrickBreaker
             this.level3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.level3.Font = new System.Drawing.Font("Ink Free", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.level3.ForeColor = System.Drawing.Color.White;
-            this.level3.Location = new System.Drawing.Point(451, 170);
+            this.level3.Location = new System.Drawing.Point(473, 144);
+            this.level3.Margin = new System.Windows.Forms.Padding(4);
             this.level3.Name = "level3";
-            this.level3.Size = new System.Drawing.Size(176, 86);
+            this.level3.Size = new System.Drawing.Size(138, 118);
             this.level3.TabIndex = 1;
             this.level3.Text = "3";
             this.level3.UseVisualStyleBackColor = true;
@@ -86,9 +88,10 @@ namespace BrickBreaker
             this.level2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.level2.Font = new System.Drawing.Font("Ink Free", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.level2.ForeColor = System.Drawing.Color.White;
-            this.level2.Location = new System.Drawing.Point(244, 170);
+            this.level2.Location = new System.Drawing.Point(293, 144);
+            this.level2.Margin = new System.Windows.Forms.Padding(4);
             this.level2.Name = "level2";
-            this.level2.Size = new System.Drawing.Size(176, 86);
+            this.level2.Size = new System.Drawing.Size(138, 118);
             this.level2.TabIndex = 2;
             this.level2.Text = "2";
             this.level2.UseVisualStyleBackColor = true;
@@ -103,9 +106,10 @@ namespace BrickBreaker
             this.level4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.level4.Font = new System.Drawing.Font("Ink Free", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.level4.ForeColor = System.Drawing.Color.White;
-            this.level4.Location = new System.Drawing.Point(656, 170);
+            this.level4.Location = new System.Drawing.Point(658, 144);
+            this.level4.Margin = new System.Windows.Forms.Padding(4);
             this.level4.Name = "level4";
-            this.level4.Size = new System.Drawing.Size(176, 86);
+            this.level4.Size = new System.Drawing.Size(138, 118);
             this.level4.TabIndex = 3;
             this.level4.Text = "4";
             this.level4.UseVisualStyleBackColor = true;
@@ -120,9 +124,10 @@ namespace BrickBreaker
             this.level5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.level5.Font = new System.Drawing.Font("Ink Free", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.level5.ForeColor = System.Drawing.Color.White;
-            this.level5.Location = new System.Drawing.Point(856, 170);
+            this.level5.Location = new System.Drawing.Point(841, 144);
+            this.level5.Margin = new System.Windows.Forms.Padding(4);
             this.level5.Name = "level5";
-            this.level5.Size = new System.Drawing.Size(176, 86);
+            this.level5.Size = new System.Drawing.Size(138, 118);
             this.level5.TabIndex = 4;
             this.level5.Text = "5";
             this.level5.UseVisualStyleBackColor = true;
@@ -137,9 +142,10 @@ namespace BrickBreaker
             this.level10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.level10.Font = new System.Drawing.Font("Ink Free", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.level10.ForeColor = System.Drawing.Color.White;
-            this.level10.Location = new System.Drawing.Point(856, 293);
+            this.level10.Location = new System.Drawing.Point(841, 296);
+            this.level10.Margin = new System.Windows.Forms.Padding(4);
             this.level10.Name = "level10";
-            this.level10.Size = new System.Drawing.Size(176, 86);
+            this.level10.Size = new System.Drawing.Size(138, 118);
             this.level10.TabIndex = 9;
             this.level10.Text = "10";
             this.level10.UseVisualStyleBackColor = true;
@@ -154,9 +160,10 @@ namespace BrickBreaker
             this.level9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.level9.Font = new System.Drawing.Font("Ink Free", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.level9.ForeColor = System.Drawing.Color.White;
-            this.level9.Location = new System.Drawing.Point(656, 293);
+            this.level9.Location = new System.Drawing.Point(658, 296);
+            this.level9.Margin = new System.Windows.Forms.Padding(4);
             this.level9.Name = "level9";
-            this.level9.Size = new System.Drawing.Size(176, 86);
+            this.level9.Size = new System.Drawing.Size(138, 118);
             this.level9.TabIndex = 8;
             this.level9.Text = "9";
             this.level9.UseVisualStyleBackColor = true;
@@ -171,9 +178,10 @@ namespace BrickBreaker
             this.level7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.level7.Font = new System.Drawing.Font("Ink Free", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.level7.ForeColor = System.Drawing.Color.White;
-            this.level7.Location = new System.Drawing.Point(244, 293);
+            this.level7.Location = new System.Drawing.Point(293, 296);
+            this.level7.Margin = new System.Windows.Forms.Padding(4);
             this.level7.Name = "level7";
-            this.level7.Size = new System.Drawing.Size(176, 86);
+            this.level7.Size = new System.Drawing.Size(138, 118);
             this.level7.TabIndex = 7;
             this.level7.Text = "7";
             this.level7.UseVisualStyleBackColor = true;
@@ -188,9 +196,10 @@ namespace BrickBreaker
             this.level8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.level8.Font = new System.Drawing.Font("Ink Free", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.level8.ForeColor = System.Drawing.Color.White;
-            this.level8.Location = new System.Drawing.Point(451, 293);
+            this.level8.Location = new System.Drawing.Point(473, 296);
+            this.level8.Margin = new System.Windows.Forms.Padding(4);
             this.level8.Name = "level8";
-            this.level8.Size = new System.Drawing.Size(176, 86);
+            this.level8.Size = new System.Drawing.Size(138, 118);
             this.level8.TabIndex = 6;
             this.level8.Text = "8";
             this.level8.UseVisualStyleBackColor = true;
@@ -205,9 +214,10 @@ namespace BrickBreaker
             this.level6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.level6.Font = new System.Drawing.Font("Ink Free", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.level6.ForeColor = System.Drawing.Color.White;
-            this.level6.Location = new System.Drawing.Point(36, 293);
+            this.level6.Location = new System.Drawing.Point(119, 296);
+            this.level6.Margin = new System.Windows.Forms.Padding(4);
             this.level6.Name = "level6";
-            this.level6.Size = new System.Drawing.Size(176, 86);
+            this.level6.Size = new System.Drawing.Size(138, 118);
             this.level6.TabIndex = 5;
             this.level6.Text = "6";
             this.level6.UseVisualStyleBackColor = true;
@@ -222,9 +232,10 @@ namespace BrickBreaker
             this.menuButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.menuButton.Font = new System.Drawing.Font("Ink Free", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuButton.ForeColor = System.Drawing.Color.White;
-            this.menuButton.Location = new System.Drawing.Point(422, 418);
+            this.menuButton.Location = new System.Drawing.Point(433, 458);
+            this.menuButton.Margin = new System.Windows.Forms.Padding(4);
             this.menuButton.Name = "menuButton";
-            this.menuButton.Size = new System.Drawing.Size(240, 86);
+            this.menuButton.Size = new System.Drawing.Size(223, 118);
             this.menuButton.TabIndex = 10;
             this.menuButton.Text = "Main Menu";
             this.menuButton.UseVisualStyleBackColor = true;
@@ -232,7 +243,7 @@ namespace BrickBreaker
             // 
             // LevelSelect
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
@@ -247,6 +258,7 @@ namespace BrickBreaker
             this.Controls.Add(this.level2);
             this.Controls.Add(this.level3);
             this.Controls.Add(this.level1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "LevelSelect";
             this.Size = new System.Drawing.Size(1100, 700);
             this.ResumeLayout(false);
