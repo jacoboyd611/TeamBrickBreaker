@@ -20,7 +20,8 @@ namespace BrickBreaker
     public partial class GameScreen : UserControl
     {
 
-        int level = 1;
+        public static int level = 1;
+        public static int endValue = 0;
         Bitmap jellyFish = Properties.Resources.jellyfish;
         bool krabbyPatty = false;
         int krabbyTime = 0;
@@ -45,13 +46,9 @@ namespace BrickBreaker
         SolidBrush ballBrush = new SolidBrush(Color.Yellow);
         Pen borderPen = new Pen(Color.Black);
 
-
-
         //PowerUp list 
         List<PowerUp> powerUps = new List<PowerUp>();
         int powerUpSize = 20;
-
-
 
         //random
         Random rnd = new Random();
@@ -196,6 +193,7 @@ namespace BrickBreaker
                     if (lives == 0)
                     {
                         gameTimer.Enabled = false;
+                        endValue = 2;
                         OnEnd();
                     }
                 }
@@ -225,6 +223,7 @@ namespace BrickBreaker
                         if (blocks.Count == 0)
                         {
                             gameTimer.Enabled = false;
+                            endValue = 1;
                             OnEnd();
                         }
                         break;
