@@ -80,7 +80,7 @@ namespace BrickBreaker
             balls.Clear();
             //set life counter
             lives = 3;
-            BackColor = colour[level];
+            //BackColor = colour[level];
 
             //set all button presses to false.
             leftArrowDown = rightArrowDown = false;

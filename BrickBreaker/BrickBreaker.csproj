@@ -154,7 +154,30 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\ping.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\endScreen.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\grassSkirt.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\gloveWorld.png" />
+    <None Include="Resources\bikini bottom.png" />
+    <None Include="Resources\gooLagoon.png" />
+    <None Include="Resources\spongebobHouse.png" />
+    <None Include="Resources\patricksHouse.png" />
+    <None Include="Resources\squidwardsHouse.png" />
+    <None Include="Resources\krustyKrab.jpg" />
+    <None Include="Resources\jellyfish.png" />
+    <None Include="Resources\jellyfishFields.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Levels\lvl1.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Levels\lvl10.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Levels\lvl2.xml">
@@ -175,27 +198,12 @@
     <Content Include="Levels\lvl7.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Levels\test1.xml">
+    <Content Include="Levels\lvl8.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Resources\ping.wav">
+    <Content Include="Levels\lvl9.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\endScreen.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\grassSkirt.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\gloveWorld.png" />
-    <None Include="Resources\bikini bottom.png" />
-    <None Include="Resources\gooLagoon.png" />
-    <None Include="Resources\spongebobHouse.png" />
-    <None Include="Resources\patricksHouse.png" />
-    <None Include="Resources\squidwardsHouse.png" />
-    <None Include="Resources\krustyKrab.jpg" />
-    <None Include="Resources\jellyfish.png" />
-    <None Include="Resources\jellyfishFields.png" />
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

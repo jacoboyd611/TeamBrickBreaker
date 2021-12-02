@@ -121,5 +121,4 @@
   <brick x="35" y="341" width="13" height="25" value="1" colour="Salmon" />
   <brick x="18" y="366" width="13" height="25" value="1" colour="Salmon" />
   <brick x="29" y="306" width="74" height="32" value="2" colour="Salmon" />
-  <brick x="-8" y="486" width="1109" height="25" value="2" colour="DarkSlateGray" />
 </bricks>
