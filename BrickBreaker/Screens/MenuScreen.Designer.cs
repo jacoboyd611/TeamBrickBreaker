@@ -34,6 +34,7 @@
             this.creatorLabel = new System.Windows.Forms.Label();
             this.welcomeLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.levelButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // playButton
@@ -112,6 +113,25 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Use arrow keys to move paddle left and right.";
             // 
+            // levelButton
+            // 
+            this.levelButton.BackColor = System.Drawing.Color.White;
+            this.levelButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("levelButton.BackgroundImage")));
+            this.levelButton.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.levelButton.FlatAppearance.BorderSize = 5;
+            this.levelButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.levelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.levelButton.Font = new System.Drawing.Font("Ink Free", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.levelButton.ForeColor = System.Drawing.Color.White;
+            this.levelButton.Location = new System.Drawing.Point(829, 299);
+            this.levelButton.Margin = new System.Windows.Forms.Padding(4);
+            this.levelButton.Name = "levelButton";
+            this.levelButton.Size = new System.Drawing.Size(206, 76);
+            this.levelButton.TabIndex = 6;
+            this.levelButton.Text = "Level Select";
+            this.levelButton.UseVisualStyleBackColor = false;
+            this.levelButton.Click += new System.EventHandler(this.levelButton_Click);
+            // 
             // MenuScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -119,6 +139,7 @@
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Controls.Add(this.levelButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.welcomeLabel);
             this.Controls.Add(this.creatorLabel);
@@ -140,5 +161,6 @@
         private System.Windows.Forms.Label creatorLabel;
         private System.Windows.Forms.Label welcomeLabel;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button levelButton;
     }
 }

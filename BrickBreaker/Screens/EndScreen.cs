@@ -19,6 +19,15 @@ namespace BrickBreaker
             backMedia.Open(new Uri(Application.StartupPath + "/Resources/endScreen.wav"));
             backMedia.MediaEnded += new EventHandler(backMedia_MediaEnded);
             backMedia.Play();
+
+            if (GameScreen.endValue == 1)
+            {
+                gameoverLabel.Text = "You won!";
+            }
+            else if (GameScreen.endValue == 2)
+            {
+                gameoverLabel.Text = "Game Over";
+            }
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -42,6 +51,29 @@ namespace BrickBreaker
         {
             backMedia.Stop();
             backMedia.Play();
+        }
+
+        private void nextButton_Click(object sender, EventArgs e)
+        {
+            GameScreen.level++;
+            GameScreen gs = new GameScreen();
+            Form form = this.FindForm();
+
+            form.Controls.Add(gs);
+            form.Controls.Remove(this);
+
+            gs.Location = new Point((form.Width - gs.Width) / 2, (form.Height - gs.Height) / 2);
+        }
+
+        private void retryButton_Click(object sender, EventArgs e)
+        {
+            GameScreen gs = new GameScreen();
+            Form form = this.FindForm();
+
+            form.Controls.Add(gs);
+            form.Controls.Remove(this);
+
+            gs.Location = new Point((form.Width - gs.Width) / 2, (form.Height - gs.Height) / 2);
         }
     }
 }

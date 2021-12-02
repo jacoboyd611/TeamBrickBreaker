@@ -38,5 +38,17 @@ namespace BrickBreaker
         {
 
         }
+
+        private void levelButton_Click(object sender, EventArgs e)
+        {
+            // Goes to the level select
+            LevelSelect ls = new LevelSelect();
+            Form form = this.FindForm();
+
+            form.Controls.Add(ls);
+            form.Controls.Remove(this);
+
+            ls.Location = new Point((form.Width - ls.Width) / 2, (form.Height - ls.Height) / 2);
+        }
     }
 }
