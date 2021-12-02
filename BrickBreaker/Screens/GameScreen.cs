@@ -23,6 +23,7 @@ namespace BrickBreaker
         int level = 1;
         Bitmap jellyFish = Properties.Resources.jellyfish;
         bool krabbyPatty = false;
+        int krabbyTime = 0;
         #region global values
 
         //player1 button control keys - DO NOT CHANGE
@@ -262,6 +263,7 @@ namespace BrickBreaker
                     else if (powerUps[i].type == "krabbyPatty")
                     {
                         krabbyPatty = true;
+                        krabbyTime = 120;
                     }
                     powerUps.Remove(powerUps[i]);
                 }
@@ -277,6 +279,29 @@ namespace BrickBreaker
                 paddle.wumbo = false;
                 paddle.width -= 200;
                 paddle.x += 100;
+            }
+
+            if (krabbyTime > 0)
+            {
+                krabbyTime--;
+            }
+            else if (krabbyPatty)
+            {
+                krabbyPatty = false;
+            }
+
+            pUpLabel.Text = "";
+            if (balls.Count() > 1)
+            {
+                pUpLabel.Text += $"\nMultiball: {balls.Count()}";
+            }
+            if (paddle.wumbo)
+            {
+                pUpLabel.Text += $"\nWumbo: {paddle.wumboTime}";
+            }
+            if (krabbyPatty)
+            {
+                pUpLabel.Text += $"\nKrabby Patty: {krabbyTime}";
             }
             Refresh();
         }
