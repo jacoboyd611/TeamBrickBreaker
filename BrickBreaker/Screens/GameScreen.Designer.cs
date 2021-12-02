@@ -60,6 +60,7 @@
             this.pUpLabel.Size = new System.Drawing.Size(164, 53);
             this.pUpLabel.TabIndex = 0;
             this.pUpLabel.Text = "label1";
+            this.pUpLabel.Visible = false;
             // 
             // GameScreen
             // 

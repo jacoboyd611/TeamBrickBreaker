@@ -23,6 +23,10 @@ namespace BrickBreaker
         public static int level = 1;
         public static int endValue = 0;
         Bitmap jellyFish = Properties.Resources.jellyfish;
+        Brush black = new SolidBrush(Color.Black);
+        Font drawFont = new Font("Arial", 15);
+        Pen wumboPen = new Pen(Color.Yellow, 10);
+        float arcLength = -360;
 
         System.Windows.Media.MediaPlayer blipSound = new System.Windows.Media.MediaPlayer();
         
@@ -182,25 +186,24 @@ namespace BrickBreaker
                 if (balls[i].BottomCollision(this))
                 {
                     // Moves the ball back to origin
-                    if (balls.Count() == 1)
+                    if (balls.Count() > 1)
                     {
-                        ball.x = ((paddle.x - (ball.size / 2)) + (paddle.width / 2));
-                        ball.y = (this.Height - paddle.height) - 85;
-
-                        lives--;
+                        balls.RemoveAt(i);
                     }
                     else
                     {
-                        balls.Remove(balls[i]);
-                    }
-
-                    if (lives == 0)
-                    {
-                        gameTimer.Enabled = false;
-                        endValue = 2;
-                        OnEnd();
+                        balls[i].x = ((paddle.x - (ball.size / 2)) + (paddle.width / 2));
+                        balls[i].y = (this.Height - paddle.height) - 85;
+                        lives--;
                     }
                 }
+            }
+
+            if (lives == 0)
+            {
+                gameTimer.Enabled = false;
+                endValue = 2;
+                OnEnd();
             }
             #endregion
 
@@ -216,11 +219,11 @@ namespace BrickBreaker
                 {
                     if (b.BlockCollision(blocks[i], krabbyPatty))
                     {
+                        blocks[i].hp--;
                         blipSound.Play();
                         //5% chance to make power up when block breaks
                         MakePowerUp(blocks[i].x, blocks[i].y);
-
-                        blocks.Remove(blocks[i]);
+                        if (blocks[i].hp == 0) { blocks.Remove(blocks[i]); }
 
                         if (blocks.Count == 0)
                         {
@@ -258,8 +261,8 @@ namespace BrickBreaker
                     {
                         paddle.width += 200;
                         paddle.x -= 100;
-                        paddle.wumbo = true;
                         paddle.wumboTime = 300;
+                        paddle.wumbo = true;
                     }
                     else if (powerUps[i].type == "krabbyPatty")
                     {
@@ -271,7 +274,7 @@ namespace BrickBreaker
             }
             #endregion
 
-            if (paddle.wumboTime > 0)
+            if (paddle.wumbo && paddle.wumboTime > 0)
             {
                 paddle.wumboTime--;
             }
@@ -280,6 +283,7 @@ namespace BrickBreaker
                 paddle.wumbo = false;
                 paddle.width -= 200;
                 paddle.x += 100;
+                paddle.wumboTime = 300;
             }
 
             if (krabbyTime > 0)
@@ -292,10 +296,6 @@ namespace BrickBreaker
             }
 
             pUpLabel.Text = "";
-            if (balls.Count() > 1)
-            {
-                pUpLabel.Text += $"\nMultiball: {balls.Count()}";
-            }
             if (paddle.wumbo)
             {
                 pUpLabel.Text += $"\nWumbo: {paddle.wumboTime}";
@@ -331,6 +331,7 @@ namespace BrickBreaker
             {
                 e.Graphics.FillRectangle(b.brush, b.x, b.y, b.width, b.height);
                 e.Graphics.DrawRectangle(borderPen, b.x, b.y, b.width, b.height);
+                e.Graphics.DrawString($"{b.hp}", drawFont, black, b.x + b.width/2 - drawFont.Size/2, b.y+ b.height/2 - drawFont.Size);
             }
 
             // Draws ball
@@ -348,6 +349,13 @@ namespace BrickBreaker
             if (lives == 3) { e.Graphics.DrawImage(jellyFish, 152, 552, 51, 67); }
             if (lives >= 2) { e.Graphics.DrawImage(jellyFish, 84, 552, 51, 67); }
             if (lives >= 1) { e.Graphics.DrawImage(jellyFish, 12, 552, 51, 67); }
+
+            if (paddle.wumbo)
+            {
+                e.Graphics.DrawArc(wumboPen, 10, 10, 30, 30, 360, arcLength * paddle.wumboTime / 300);
+            }
+
+
         }
 
         public void MakePowerUp(float x, float y)

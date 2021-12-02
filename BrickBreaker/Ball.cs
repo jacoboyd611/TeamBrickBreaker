@@ -101,7 +101,6 @@ namespace BrickBreaker
             if (ballRec.IntersectsWith(paddleRec) && ySpeed >= 0)
             {
                 ySpeed *= -1;
-                xSpeed += rand.Next(-3, -1);
 
                 if (left) { xSpeed = -Math.Abs(xSpeed); }
                 if (right) { xSpeed = Math.Abs(xSpeed); }             
@@ -121,20 +120,17 @@ namespace BrickBreaker
             if (x <= 0)
             {
                 xSpeed *= -1;
-                ySpeed += rand.Next(1, 4);
             }
             // Collision with right wall
             if (x >= (UC.Width - size))
             {
                 xSpeed *= -1;
-                ySpeed += rand.Next(1, 4);
             }
             // Collision with top wall
             if (y <= 1)
             {
                 ySpeed *= -1;
                 y = 2;
-                xSpeed += rand.Next(-3, -1);
             }
         }
 
