@@ -12,6 +12,7 @@ namespace BrickBreaker
 
         public int x, y, xSpeed, ySpeed, size;
         public Color colour;
+      
 
         public static Random rand = new Random();
 
@@ -77,18 +78,18 @@ namespace BrickBreaker
             return "safe";
         }
 
-        public bool BlockCollision(Block b)
+        public bool BlockCollision(Block b, bool krabbyPatty)
         {
             Rectangle blockRec = new Rectangle(b.x, b.y, b.width, b.height);
             Rectangle futureBallRec = new Rectangle(x + xSpeed, y + ySpeed, size, size);
-
-
-            if (Collision(futureBallRec, blockRec) != "none")
-            {
-                futureCollision = Collision(futureBallRec, blockRec);
-                futureRectCol = new Rectangle(x, y, size, size);
+            if (!krabbyPatty)
+            {   
+                if (Collision(futureBallRec, blockRec) != "none")
+                {
+                    futureCollision = Collision(futureBallRec, blockRec);
+                    futureRectCol = new Rectangle(x, y, size, size);
+                }
             }
-
             return futureBallRec.IntersectsWith(blockRec);
         }
 
@@ -100,16 +101,18 @@ namespace BrickBreaker
             if (ballRec.IntersectsWith(paddleRec) && ySpeed >= 0)
             {
                 ySpeed *= -1;
+                xSpeed += rand.Next(-3, -1);
+
                 if (left) { xSpeed = -Math.Abs(xSpeed); }
                 if (right) { xSpeed = Math.Abs(xSpeed); }             
             }
-            //else if (ballRec.IntersectsWith(paddleRec) && ySpeed <= 0)
-            //{
-            //    var ballPosition = x - p.x;
-            //    var hitPercent = (ballPosition / (p.width - size)) - .5;
-            //    xSpeed = (int)(hitPercent * 10);
-            //    ySpeed *= -1;
-            //}
+            if (ballRec.IntersectsWith(paddleRec) && GameScreen.rightArrowDown == false && GameScreen.leftArrowDown == false)
+            {
+                var ballPosition = x - p.x;
+                var hitPercent = (ballPosition / (p.width - size)) - .5;
+                xSpeed = (int)(hitPercent * 10);
+                ySpeed *= 1;
+            }
         }
 
         public void WallCollision(UserControl UC)
@@ -118,17 +121,20 @@ namespace BrickBreaker
             if (x <= 0)
             {
                 xSpeed *= -1;
+                ySpeed += rand.Next(1, 4);
             }
             // Collision with right wall
             if (x >= (UC.Width - size))
             {
                 xSpeed *= -1;
+                ySpeed += rand.Next(1, 4);
             }
             // Collision with top wall
             if (y <= 1)
             {
                 ySpeed *= -1;
                 y = 2;
+                xSpeed += rand.Next(-3, -1);
             }
         }
 
