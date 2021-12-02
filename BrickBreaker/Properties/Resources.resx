@@ -121,6 +121,9 @@
   <data name="bikini_bottom" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bikini bottom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="endScreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\endScreen.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="gloveWorld" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gloveWorld.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -1854,6 +1857,9 @@
   </data>
   <data name="patricksHouse" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\patricksHouse.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ping" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ping.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="spongebobHouse" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\spongebobHouse.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

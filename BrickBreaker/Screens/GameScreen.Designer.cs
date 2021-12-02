@@ -54,10 +54,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackColor = System.Drawing.Color.Turquoise;
+            this.BackColor = System.Drawing.Color.SkyBlue;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "GameScreen";
             this.Size = new System.Drawing.Size(1100, 700);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.GameScreen_Paint);

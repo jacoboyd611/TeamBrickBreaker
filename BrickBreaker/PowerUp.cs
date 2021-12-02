@@ -34,7 +34,7 @@ namespace BrickBreaker
             }
             #endregion
 
-            type = power;
+            type = power; 
             x = _x;
             y = _y;
         }
