@@ -30,7 +30,6 @@ namespace BrickBreaker
         Random rand = new Random();
 
         Brush[] krabby = { new SolidBrush(Color.Red), new SolidBrush(Color.Orange) };
-        int flipFlop = 0;
         float arcLength = -360;
 
         System.Windows.Media.MediaPlayer blipSound = new System.Windows.Media.MediaPlayer();
