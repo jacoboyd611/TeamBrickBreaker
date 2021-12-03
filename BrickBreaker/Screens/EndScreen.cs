@@ -55,7 +55,9 @@ namespace BrickBreaker
 
         private void nextButton_Click(object sender, EventArgs e)
         {
-            GameScreen.level++;
+            backMedia.Stop();
+            if (GameScreen.level == 10) { GameScreen.level = 1; }
+            else { GameScreen.level++; }
             GameScreen gs = new GameScreen();
             Form form = this.FindForm();
 
@@ -67,6 +69,7 @@ namespace BrickBreaker
 
         private void retryButton_Click(object sender, EventArgs e)
         {
+            backMedia.Stop();
             GameScreen gs = new GameScreen();
             Form form = this.FindForm();
 

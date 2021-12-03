@@ -85,7 +85,6 @@ namespace BrickBreaker
 
         public void OnStart()
         {
-            blipSound.Open(new Uri(Application.StartupPath + "/Resources/ping.wav"));
             backMedia.Play();
             balls.Clear();
             //set life counter
@@ -226,6 +225,7 @@ namespace BrickBreaker
                     if (b.BlockCollision(blocks[i], krabbyPatty))
                     {
                         blocks[i].hp--;
+                        blipSound.Open(new Uri(Application.StartupPath + "/Resources/ping.wav"));
                         blipSound.Play();
                         //5% chance to make power up when block breaks
                         MakePowerUp(blocks[i].x, blocks[i].y);
